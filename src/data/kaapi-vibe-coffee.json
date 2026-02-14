@@ -1,0 +1,301 @@
+{
+  "menu": [
+    {
+      "foodid": "KAAPI_VIBE:coffee:8",
+      "foodname": "Americano",
+      "submenu": [
+        "Hot or Iced Option",
+        "Caffeine option"
+      ],
+      "description": "Double shot espresso cut with water"
+    },
+    {
+      "foodid": "KAAPI_VIBE:coffee:0",
+      "foodname": "Cappuccino",
+      "submenu": [
+        "Caffeine option",
+        "Milk option"
+      ],
+      "description": "Double shot espresso with textured velvety microfoam"
+    },
+    {
+      "foodid": "KAAPI_VIBE:coffee:45",
+      "foodname": "Cold Coffee",
+      "submenu": [
+        "Caffeine option"
+      ],
+      "description": "Blend of cold coffee premix, milk and ice"
+    },
+    {
+      "foodid": "KAAPI_VIBE:coffee:47",
+      "foodname": "Cortado",
+      "submenu": [
+        "Caffeine option",
+        "Milk option"
+      ],
+      "description": "Doble shot espresso with equal parts milk"
+    },
+    {
+      "foodid": "KAAPI_VIBE:coffee:5",
+      "foodname": "Espresso",
+      "submenu": [],
+      "description": "Double shot espresso"
+    },
+    {
+      "foodid": "KAAPI_VIBE:coffee:48",
+      "foodname": "Flat White",
+      "submenu": [
+        "Caffeine option",
+        "Milk option"
+      ],
+      "description": "Double shot espresso with less steamed milk and thin layer of microfoam"
+    },
+    {
+      "foodid": "KAAPI_VIBE:coffee:1",
+      "foodname": "Latte",
+      "submenu": [
+        "Caffeine option",
+        "Milk option",
+        "Hot or Iced Option"
+      ],
+      "description": "Double shot espresso with steamed milk and microfoam top (the milkiest drink)"
+    },
+    {
+      "foodid": "KAAPI_VIBE:coffee:40",
+      "foodname": "Macchiato",
+      "submenu": [],
+      "description": "Double shot espresso with a dollop of microfoam "
+    },
+    {
+      "foodid": "KAAPI_VIBE:coffee:43",
+      "foodname": "Mocha",
+      "submenu": [
+        "Caffeine option",
+        "Milk option",
+        "Hot or Iced Option"
+      ],
+      "description": "Double shot espresso, chocolate steaming milk and microfoam top"
+    },
+    {
+      "foodid": "KAAPI_VIBE:coffee:46",
+      "foodname": "Piccolo",
+      "submenu": [
+        "Caffeine option",
+        "Milk option"
+      ],
+      "description": "Single shot espresso with steamed milk and a little foam (baby latte)"
+    },
+    {
+      "foodid": "KAAPI_VIBE:coffee:11",
+      "foodname": "South Indian Filter Coffee",
+      "submenu": [],
+      "description": "Brewed by dripping hot water through ground coffee served with milk"
+    }
+  ],
+  "submenu": {
+    "attributes": {
+      "Caffeine option": {
+        "default": "Regular",
+        "ismand": true,
+        "list": [
+          "Regular",
+          "Decaffeinated"
+        ],
+        "multiple": false
+      },
+      "Espresso shot": {
+        "default": "Single Shot",
+        "free_quantity": 0,
+        "ismand": true,
+        "list": [
+          "Single Shot",
+          "Double Shot"
+        ],
+        "max_quantity": 1,
+        "min_quantity": 0,
+        "multiple": false
+      },
+      "Flavorings for cappu cremo": {
+        "default": "Caramel Syrup",
+        "ismand": true,
+        "list": [
+          "Caramel Syrup",
+          "Chocolate syrup"
+        ],
+        "max_quantity": 1,
+        "min_quantity": 1,
+        "multiple": false
+      },
+      "Flavorings for cappuccino": {
+        "default": "None Required",
+        "free_quantity": 0,
+        "ismand": true,
+        "list": [
+          "None Required",
+          "Hazelnut Syrup",
+          "Tiramisu syrup",
+          "Vanilla syrup",
+          "Irish syrup"
+        ],
+        "max_quantity": 1,
+        "min_quantity": 1,
+        "multiple": false
+      },
+      "Flavorings for coffee mocha": {
+        "default": "Chocolate syrup",
+        "ismand": true,
+        "list": [
+          "Chocolate syrup"
+        ],
+        "max_quantity": 1,
+        "min_quantity": 1,
+        "multiple": false
+      },
+      "Flavorings for cold coffee": {
+        "default": "None Required",
+        "ismand": true,
+        "list": [
+          "None Required",
+          "Caramel Syrup",
+          "Hazelnut Syrup",
+          "Tiramisu syrup",
+          "Vanilla syrup",
+          "Irish syrup",
+          "Chocolate syrup"
+        ],
+        "max_quantity": 1,
+        "min_quantity": 1,
+        "multiple": false
+      },
+      "Flavorings for flat white": {
+        "default": "None Required",
+        "ismand": true,
+        "list": [
+          "None Required",
+          "Caramel Syrup",
+          "Hazelnut Syrup",
+          "Irish syrup",
+          "Tiramisu syrup",
+          "Vanilla syrup"
+        ],
+        "max_quantity": 1,
+        "min_quantity": 1,
+        "multiple": false
+      },
+      "Flavorings for latte": {
+        "default": "None Required",
+        "ismand": true,
+        "list": [
+          "None Required",
+          "Caramel Syrup",
+          "Hazelnut Syrup",
+          "Tiramisu syrup",
+          "Vanilla syrup",
+          "Irish syrup"
+        ],
+        "max_quantity": 1,
+        "min_quantity": 1,
+        "multiple": false
+      },
+      "Flavorings for mocha frappuccino": {
+        "default": "Chocolate syrup",
+        "ismand": true,
+        "list": [
+          "Chocolate syrup"
+        ],
+        "max_quantity": 1,
+        "min_quantity": 1,
+        "multiple": false
+      },
+      "Hot or Iced Option": {
+        "default": "Hot",
+        "ismand": true,
+        "list": [
+          "Hot",
+          "Iced"
+        ],
+        "multiple": false
+      },
+      "Milk option": {
+        "default": "Dairy",
+        "free_quantity": 0,
+        "ismand": true,
+        "list": [
+          "Dairy",
+          "Almond",
+          "Oat",
+          "Slim",
+          "Soy",
+          "Lactose Free Milk"
+        ],
+        "max_quantity": 1,
+        "min_quantity": 1,
+        "multiple": false
+      }
+    },
+    "extras": {
+      "Caffeine option": {
+        "Decaffeinated": "KAAPI_VIBE:coffee:29",
+        "Regular": "KAAPI_VIBE:coffee:28"
+      },
+      "Espresso shot": {
+        "Double Shot": "KAAPI_VIBE:coffee:31",
+        "Single Shot": "KAAPI_VIBE:coffee:30"
+      },
+      "Flavorings for cappu cremo": {
+        "Caramel Syrup": "KAAPI_VIBE:coffee:22",
+        "Chocolate syrup": "KAAPI_VIBE:coffee:27"
+      },
+      "Flavorings for cappuccino": {
+        "Hazelnut Syrup": "KAAPI_VIBE:coffee:23",
+        "Irish syrup": "KAAPI_VIBE:coffee:26",
+        "None Required": "KAAPI_VIBE:coffee:34",
+        "Tiramisu syrup": "KAAPI_VIBE:coffee:24",
+        "Vanilla syrup": "KAAPI_VIBE:coffee:25"
+      },
+      "Flavorings for coffee mocha": {
+        "Chocolate syrup": "KAAPI_VIBE:coffee:27"
+      },
+      "Flavorings for cold coffee": {
+        "Caramel Syrup": "KAAPI_VIBE:coffee:22",
+        "Chocolate syrup": "KAAPI_VIBE:coffee:27",
+        "Hazelnut Syrup": "KAAPI_VIBE:coffee:23",
+        "Irish syrup": "KAAPI_VIBE:coffee:26",
+        "None Required": "KAAPI_VIBE:coffee:34",
+        "Tiramisu syrup": "KAAPI_VIBE:coffee:24",
+        "Vanilla syrup": "KAAPI_VIBE:coffee:25"
+      },
+      "Flavorings for flat white": {
+        "Caramel Syrup": "KAAPI_VIBE:coffee:22",
+        "Hazelnut Syrup": "KAAPI_VIBE:coffee:23",
+        "Irish syrup": "KAAPI_VIBE:coffee:26",
+        "None Required": "KAAPI_VIBE:coffee:34",
+        "Tiramisu syrup": "KAAPI_VIBE:coffee:24",
+        "Vanilla syrup": "KAAPI_VIBE:coffee:25"
+      },
+      "Flavorings for latte": {
+        "Caramel Syrup": "KAAPI_VIBE:coffee:22",
+        "Hazelnut Syrup": "KAAPI_VIBE:coffee:23",
+        "Irish syrup": "KAAPI_VIBE:coffee:26",
+        "None Required": "KAAPI_VIBE:coffee:34",
+        "Tiramisu syrup": "KAAPI_VIBE:coffee:24",
+        "Vanilla syrup": "KAAPI_VIBE:coffee:25"
+      },
+      "Flavorings for mocha frappuccino": {
+        "Chocolate syrup": "KAAPI_VIBE:coffee:27"
+      },
+      "Hot or Iced Option": {
+        "Hot": "KAAPI_VIBE:coffee:52",
+        "Iced": "KAAPI_VIBE:coffee:53"
+      },
+      "Milk option": {
+        "Almond": "KAAPI_VIBE:coffee:20",
+        "Dairy": "KAAPI_VIBE:coffee:51",
+        "Lactose Free Milk": "KAAPI_VIBE:coffee:19",
+        "Oat": "KAAPI_VIBE:coffee:18",
+        "Slim": "KAAPI_VIBE:coffee:54",
+        "Soy": "KAAPI_VIBE:coffee:21"
+      }
+    }
+  }
+}

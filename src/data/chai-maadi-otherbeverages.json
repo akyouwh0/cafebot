@@ -1,0 +1,126 @@
+{
+  "menu": [
+    {
+      "foodid": "CHAI_MAADI:otherbeverages:97",
+      "foodname": "A Salted Caramel Mocha",
+      "submenu": [],
+      "description": "A salty-sweet masterpiece where rich chocolate and buttery caramel find their perfect espresso match"
+    },
+    {
+      "foodid": "CHAI_MAADI:otherbeverages:38",
+      "foodname": "Boost",
+      "submenu": [
+        "Milk option"
+      ],
+      "description": "Boost powder with milk"
+    },
+    {
+      "foodid": "CHAI_MAADI:otherbeverages:39",
+      "foodname": "Bournvita",
+      "submenu": [
+        "Milk option"
+      ],
+      "description": "Bournvita powder with milk"
+    },
+    {
+      "foodid": "CHAI_MAADI:otherbeverages:37",
+      "foodname": "Horlicks",
+      "submenu": [
+        "Milk option"
+      ],
+      "description": "Horlicks and steamed milk of choice"
+    },
+    {
+      "foodid": "CHAI_MAADI:otherbeverages:10",
+      "foodname": "Hot Chocolate",
+      "submenu": [
+        "Milk option"
+      ],
+      "description": "Chocolate and steamed milk of choice"
+    },
+    {
+      "foodid": "CHAI_MAADI:otherbeverages:90",
+      "foodname": "Milk",
+      "submenu": [
+        "Milk option"
+      ],
+      "description": ""
+    },
+    {
+      "foodid": "CHAI_MAADI:otherbeverages:35",
+      "foodname": "Turmeric Latte",
+      "submenu": [
+        "Milk option"
+      ],
+      "description": "A golden blend of turmeric, milk, and spices offering warmth, comfort, and natural anti-inflammatory benefits."
+    }
+  ],
+  "submenu": {
+    "attributes": {
+      "Flavorings for chocolate milkshake": {
+        "default": "Chocolate syrup",
+        "ismand": true,
+        "list": [
+          "Chocolate syrup"
+        ],
+        "max_quantity": 1,
+        "min_quantity": 1,
+        "multiple": false
+      },
+      "Flavorings for hot chocolate": {
+        "default": "Cocoa powder",
+        "free_quantity": 0,
+        "ismand": true,
+        "list": [
+          "Cocoa powder"
+        ],
+        "max_quantity": 1,
+        "min_quantity": 1,
+        "multiple": false
+      },
+      "Flavorings for vanilla milkshake": {
+        "default": "Vanilla syrup",
+        "ismand": true,
+        "list": [
+          "Vanilla syrup"
+        ],
+        "max_quantity": 1,
+        "min_quantity": 1,
+        "multiple": false
+      },
+      "Milk option": {
+        "default": "Dairy",
+        "free_quantity": 0,
+        "ismand": true,
+        "list": [
+          "Dairy",
+          "Oat",
+          "Soy",
+          "Almond",
+          "Lactose Free Milk"
+        ],
+        "max_quantity": 1,
+        "min_quantity": 1,
+        "multiple": false
+      }
+    },
+    "extras": {
+      "Flavorings for chocolate milkshake": {
+        "Chocolate syrup": "CHAI_MAADI:otherbeverages:27"
+      },
+      "Flavorings for hot chocolate": {
+        "Cocoa powder": "CHAI_MAADI:otherbeverages:85"
+      },
+      "Flavorings for vanilla milkshake": {
+        "Vanilla syrup": "CHAI_MAADI:otherbeverages:25"
+      },
+      "Milk option": {
+        "Almond": "CHAI_MAADI:otherbeverages:20",
+        "Dairy": "CHAI_MAADI:otherbeverages:86",
+        "Lactose Free Milk": "CHAI_MAADI:otherbeverages:19",
+        "Oat": "CHAI_MAADI:otherbeverages:18",
+        "Soy": "CHAI_MAADI:otherbeverages:21"
+      }
+    }
+  }
+}

@@ -1,0 +1,309 @@
+{
+  "menu": [
+    {
+      "foodid": "CHAI_MAADI:coffee:59",
+      "foodname": "A Salted Caramel Mocha",
+      "submenu": [
+        "Hot or Iced Option"
+      ],
+      "description": "A salty-sweet masterpiece where rich chocolate and buttery caramel find their perfect espresso match"
+    },
+    {
+      "foodid": "CHAI_MAADI:coffee:8",
+      "foodname": "Americano",
+      "submenu": [
+        "Hot or Iced Option",
+        "Caffeine option"
+      ],
+      "description": "Double shot espresso cut with water"
+    },
+    {
+      "foodid": "CHAI_MAADI:coffee:0",
+      "foodname": "Cappuccino",
+      "submenu": [
+        "Caffeine option",
+        "Milk option"
+      ],
+      "description": "Double shot espresso with textured velvety microfoam"
+    },
+    {
+      "foodid": "CHAI_MAADI:coffee:55",
+      "foodname": "Cold Coffee",
+      "submenu": [
+        "Caffeine option"
+      ],
+      "description": "Blend of cold coffee premix, milk and ice"
+    },
+    {
+      "foodid": "CHAI_MAADI:coffee:47",
+      "foodname": "Cortado",
+      "submenu": [
+        "Caffeine option",
+        "Milk option"
+      ],
+      "description": "Doble shot espresso with equal parts milk"
+    },
+    {
+      "foodid": "CHAI_MAADI:coffee:5",
+      "foodname": "Espresso",
+      "submenu": [],
+      "description": "Double shot espresso"
+    },
+    {
+      "foodid": "CHAI_MAADI:coffee:48",
+      "foodname": "Flat White",
+      "submenu": [
+        "Caffeine option",
+        "Milk option"
+      ],
+      "description": "Double shot espresso with less steamed milk and thin layer of microfoam"
+    },
+    {
+      "foodid": "CHAI_MAADI:coffee:1",
+      "foodname": "Latte",
+      "submenu": [
+        "Caffeine option",
+        "Milk option",
+        "Hot or Iced Option"
+      ],
+      "description": "Double shot espresso with steamed milk and microfoam top (the milkiest drink)"
+    },
+    {
+      "foodid": "CHAI_MAADI:coffee:40",
+      "foodname": "Macchiato",
+      "submenu": [],
+      "description": "Double shot espresso with a dollop of microfoam "
+    },
+    {
+      "foodid": "CHAI_MAADI:coffee:43",
+      "foodname": "Mocha",
+      "submenu": [
+        "Caffeine option",
+        "Milk option",
+        "Hot or Iced Option"
+      ],
+      "description": "Double shot espresso, chocolate steaming milk and microfoam top"
+    },
+    {
+      "foodid": "CHAI_MAADI:coffee:46",
+      "foodname": "Piccolo",
+      "submenu": [
+        "Caffeine option",
+        "Milk option"
+      ],
+      "description": "Single shot espresso with steamed milk and a little foam (baby latte)"
+    },
+    {
+      "foodid": "CHAI_MAADI:coffee:11",
+      "foodname": "South Indian Filter Coffee",
+      "submenu": [],
+      "description": "Brewed by dripping hot water through ground coffee served with milk"
+    }
+  ],
+  "submenu": {
+    "attributes": {
+      "Caffeine option": {
+        "default": "Regular",
+        "ismand": true,
+        "list": [
+          "Regular",
+          "Decaffeinated"
+        ],
+        "multiple": false
+      },
+      "Espresso shot": {
+        "default": "Single Shot",
+        "free_quantity": 0,
+        "ismand": true,
+        "list": [
+          "Single Shot",
+          "Double Shot"
+        ],
+        "max_quantity": 1,
+        "min_quantity": 0,
+        "multiple": false
+      },
+      "Flavorings for cappu cremo": {
+        "default": "Caramel Syrup",
+        "ismand": true,
+        "list": [
+          "Caramel Syrup",
+          "Chocolate syrup"
+        ],
+        "max_quantity": 1,
+        "min_quantity": 1,
+        "multiple": false
+      },
+      "Flavorings for cappuccino": {
+        "default": "None Required",
+        "free_quantity": 0,
+        "ismand": true,
+        "list": [
+          "None Required",
+          "Hazelnut Syrup",
+          "Tiramisu syrup",
+          "Vanilla syrup",
+          "Irish syrup"
+        ],
+        "max_quantity": 1,
+        "min_quantity": 1,
+        "multiple": false
+      },
+      "Flavorings for coffee mocha": {
+        "default": "Chocolate syrup",
+        "ismand": true,
+        "list": [
+          "Chocolate syrup"
+        ],
+        "max_quantity": 1,
+        "min_quantity": 1,
+        "multiple": false
+      },
+      "Flavorings for cold coffee": {
+        "default": "None Required",
+        "ismand": true,
+        "list": [
+          "None Required",
+          "Caramel Syrup",
+          "Hazelnut Syrup",
+          "Tiramisu syrup",
+          "Vanilla syrup",
+          "Irish syrup",
+          "Chocolate syrup"
+        ],
+        "max_quantity": 1,
+        "min_quantity": 1,
+        "multiple": false
+      },
+      "Flavorings for flat white": {
+        "default": "None Required",
+        "ismand": true,
+        "list": [
+          "None Required",
+          "Caramel Syrup",
+          "Hazelnut Syrup",
+          "Irish syrup",
+          "Tiramisu syrup",
+          "Vanilla syrup"
+        ],
+        "max_quantity": 1,
+        "min_quantity": 1,
+        "multiple": false
+      },
+      "Flavorings for latte": {
+        "default": "None Required",
+        "ismand": true,
+        "list": [
+          "None Required",
+          "Caramel Syrup",
+          "Hazelnut Syrup",
+          "Tiramisu syrup",
+          "Vanilla syrup",
+          "Irish syrup"
+        ],
+        "max_quantity": 1,
+        "min_quantity": 1,
+        "multiple": false
+      },
+      "Flavorings for mocha frappuccino": {
+        "default": "Chocolate syrup",
+        "ismand": true,
+        "list": [
+          "Chocolate syrup"
+        ],
+        "max_quantity": 1,
+        "min_quantity": 1,
+        "multiple": false
+      },
+      "Hot or Iced Option": {
+        "default": "Hot",
+        "ismand": true,
+        "list": [
+          "Hot",
+          "Iced"
+        ],
+        "multiple": false
+      },
+      "Milk option": {
+        "default": "Dairy",
+        "free_quantity": 0,
+        "ismand": true,
+        "list": [
+          "Dairy",
+          "Almond",
+          "Oat",
+          "Slim",
+          "Soy",
+          "Lactose Free Milk"
+        ],
+        "max_quantity": 1,
+        "min_quantity": 1,
+        "multiple": false
+      }
+    },
+    "extras": {
+      "Caffeine option": {
+        "Decaffeinated": "CHAI_MAADI:coffee:29",
+        "Regular": "CHAI_MAADI:coffee:28"
+      },
+      "Espresso shot": {
+        "Double Shot": "CHAI_MAADI:coffee:31",
+        "Single Shot": "CHAI_MAADI:coffee:30"
+      },
+      "Flavorings for cappu cremo": {
+        "Caramel Syrup": "CHAI_MAADI:coffee:22",
+        "Chocolate syrup": "CHAI_MAADI:coffee:27"
+      },
+      "Flavorings for cappuccino": {
+        "Hazelnut Syrup": "CHAI_MAADI:coffee:23",
+        "Irish syrup": "CHAI_MAADI:coffee:26",
+        "None Required": "CHAI_MAADI:coffee:34",
+        "Tiramisu syrup": "CHAI_MAADI:coffee:24",
+        "Vanilla syrup": "CHAI_MAADI:coffee:25"
+      },
+      "Flavorings for coffee mocha": {
+        "Chocolate syrup": "CHAI_MAADI:coffee:27"
+      },
+      "Flavorings for cold coffee": {
+        "Caramel Syrup": "CHAI_MAADI:coffee:22",
+        "Chocolate syrup": "CHAI_MAADI:coffee:27",
+        "Hazelnut Syrup": "CHAI_MAADI:coffee:23",
+        "Irish syrup": "CHAI_MAADI:coffee:26",
+        "None Required": "CHAI_MAADI:coffee:34",
+        "Tiramisu syrup": "CHAI_MAADI:coffee:24",
+        "Vanilla syrup": "CHAI_MAADI:coffee:25"
+      },
+      "Flavorings for flat white": {
+        "Caramel Syrup": "CHAI_MAADI:coffee:22",
+        "Hazelnut Syrup": "CHAI_MAADI:coffee:23",
+        "Irish syrup": "CHAI_MAADI:coffee:26",
+        "None Required": "CHAI_MAADI:coffee:34",
+        "Tiramisu syrup": "CHAI_MAADI:coffee:24",
+        "Vanilla syrup": "CHAI_MAADI:coffee:25"
+      },
+      "Flavorings for latte": {
+        "Caramel Syrup": "CHAI_MAADI:coffee:22",
+        "Hazelnut Syrup": "CHAI_MAADI:coffee:23",
+        "Irish syrup": "CHAI_MAADI:coffee:26",
+        "None Required": "CHAI_MAADI:coffee:34",
+        "Tiramisu syrup": "CHAI_MAADI:coffee:24",
+        "Vanilla syrup": "CHAI_MAADI:coffee:25"
+      },
+      "Flavorings for mocha frappuccino": {
+        "Chocolate syrup": "CHAI_MAADI:coffee:27"
+      },
+      "Hot or Iced Option": {
+        "Hot": "CHAI_MAADI:coffee:52",
+        "Iced": "CHAI_MAADI:coffee:53"
+      },
+      "Milk option": {
+        "Almond": "CHAI_MAADI:coffee:20",
+        "Dairy": "CHAI_MAADI:coffee:51",
+        "Lactose Free Milk": "CHAI_MAADI:coffee:19",
+        "Oat": "CHAI_MAADI:coffee:18",
+        "Slim": "CHAI_MAADI:coffee:54",
+        "Soy": "CHAI_MAADI:coffee:21"
+      }
+    }
+  }
+}

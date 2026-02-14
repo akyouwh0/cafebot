@@ -1,0 +1,176 @@
+{
+  "menu": [
+    {
+      "foodid": "CHAI_MAADI:tea:21",
+      "foodname": "Cardamom Chai",
+      "submenu": [
+        "Size"
+      ],
+      "description": "Fragrant milk tea with an infusion of Green Cardamom"
+    },
+    {
+      "foodid": "CHAI_MAADI:tea:20",
+      "foodname": "Ginger Chai",
+      "submenu": [
+        "Size"
+      ],
+      "description": "Spiced tea with ginger & milk for a comforting and bold taste "
+    },
+    {
+      "foodid": "CHAI_MAADI:tea:4",
+      "foodname": "Kahwa",
+      "submenu": [
+        "Size"
+      ],
+      "description": "A classic drink from the Himalayan valley, soul-warming and resonates with the power of Indian spices"
+    },
+    {
+      "foodid": "CHAI_MAADI:tea:5",
+      "foodname": "Kesar Chai",
+      "submenu": [
+        "Size"
+      ],
+      "description": "Milk based tea, infused with saffron for an aromatic experience "
+    },
+    {
+      "foodid": "CHAI_MAADI:tea:2",
+      "foodname": "Masala Chai",
+      "submenu": [
+        "Size"
+      ],
+      "description": "Spiced Indian tea leaves, ginger powder, cardamom powder, clove powder, cinnamon powder, black pepper powder with milk "
+    },
+    {
+      "foodid": "CHAI_MAADI:tea:22",
+      "foodname": "Reboot Chai",
+      "submenu": [
+        "Size"
+      ],
+      "description": "Black tea served with a hint of lemon, fresh mint & ginger "
+    }
+  ],
+  "submenu": {
+    "attributes": {
+      "Accompaniment": {
+        "default": "Chocolate syrup",
+        "ismand": true,
+        "list": [
+          "Chocolate syrup"
+        ],
+        "multiple": false
+      },
+      "Accompaniment1": {
+        "default": "Cocoa Powder",
+        "ismand": true,
+        "list": [
+          "Cocoa Powder"
+        ],
+        "multiple": false
+      },
+      "Accompaniments": {
+        "default": "Caramel Syrup",
+        "ismand": true,
+        "list": [
+          "Caramel Syrup",
+          "Hazlenut Syrup",
+          "Tiramisu syrup",
+          "Vanilla syrup",
+          "Irish syrup"
+        ],
+        "multiple": false
+      },
+      "Accompaniments2": {
+        "default": "Vanilla Syrup",
+        "ismand": true,
+        "list": [
+          "Vanilla Syrup"
+        ],
+        "multiple": false
+      },
+      "Accompaniments3": {
+        "default": "Chocolate Syrup",
+        "ismand": true,
+        "list": [
+          "Chocolate Syrup"
+        ],
+        "multiple": false
+      },
+      "Green tea": {
+        "default": "Earl grey tea",
+        "ismand": true,
+        "list": [
+          "Green tea",
+          "Assam tea",
+          "English breakfast tea",
+          "Darjeeling tea",
+          "Moroccan mint tea",
+          "Jasmine tea",
+          "Green lemon tea",
+          "Earl grey tea",
+          "Peppermint tea",
+          "Strawberry & Mango tea",
+          "Green sencha tea"
+        ],
+        "multiple": false
+      },
+      "Milk option": {
+        "default": "Toned Milk",
+        "ismand": true,
+        "list": [
+          "Toned Milk",
+          "Slim Milk",
+          "Oat Milk",
+          "Lactose Free Milk",
+          "Almond Milk",
+          "Soy Milk"
+        ],
+        "multiple": false
+      },
+      "Milk options": {
+        "default": "Toned Milk",
+        "ismand": true,
+        "list": [
+          "Toned Milk",
+          "Oat Milk",
+          "Soy Milk"
+        ],
+        "multiple": false
+      },
+      "Regular tea": {
+        "default": "Very ordinary chai",
+        "ismand": true,
+        "list": [
+          "Very ordinary chai",
+          "Adrak wali chai",
+          "Masala chai",
+          "Elaichi chai"
+        ],
+        "multiple": false
+      },
+      "Size": {
+        "default": "Regular",
+        "ismand": true,
+        "list": [
+          "Regular",
+          "Large"
+        ],
+        "multiple": false
+      }
+    },
+    "extras": {
+      "Accompaniment": {},
+      "Accompaniment1": {},
+      "Accompaniments": {},
+      "Accompaniments2": {},
+      "Accompaniments3": {},
+      "Green tea": {},
+      "Milk option": {},
+      "Milk options": {},
+      "Regular tea": {},
+      "Size": {
+        "Large": "CHAI_MAADI:tea:27",
+        "Regular": "CHAI_MAADI:tea:26"
+      }
+    }
+  }
+}

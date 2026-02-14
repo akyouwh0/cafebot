@@ -1,0 +1,15 @@
+[Unit]
+Description=SmartQ Telegram Bot
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/smartq-bot
+ExecStart=/home/ubuntu/.nvm/versions/node/v25.6.0/bin/node dist/index.js
+Restart=on-failure
+RestartSec=10
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target

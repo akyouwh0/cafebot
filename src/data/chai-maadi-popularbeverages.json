@@ -1,0 +1,296 @@
+{
+  "menu": [
+    {
+      "foodid": "CHAI_MAADI:popularbeverages:8",
+      "foodname": "Americano",
+      "submenu": [
+        "Hot or Iced Option",
+        "Caffeine option"
+      ],
+      "description": "Double shot espresso cut with water"
+    },
+    {
+      "foodid": "CHAI_MAADI:popularbeverages:0",
+      "foodname": "Cappuccino",
+      "submenu": [
+        "Caffeine option",
+        "Milk option"
+      ],
+      "description": "Double shot espresso with textured velvety microfoam"
+    },
+    {
+      "foodid": "CHAI_MAADI:popularbeverages:11",
+      "foodname": "Cardamom Chai",
+      "submenu": [
+        "Size"
+      ],
+      "description": "Fragrant milk tea with an infusion of Green Cardamom"
+    },
+    {
+      "foodid": "CHAI_MAADI:popularbeverages:47",
+      "foodname": "Cortado",
+      "submenu": [
+        "Caffeine option"
+      ],
+      "description": "Equal parts espresso to milk"
+    },
+    {
+      "foodid": "CHAI_MAADI:popularbeverages:5",
+      "foodname": "Espresso",
+      "submenu": [],
+      "description": "Concentrated shot of coffee"
+    },
+    {
+      "foodid": "CHAI_MAADI:popularbeverages:48",
+      "foodname": "Flat White",
+      "submenu": [
+        "Caffeine option"
+      ],
+      "description": "Espresso with less steamed milk and thin layer of microfoam"
+    },
+    {
+      "foodid": "CHAI_MAADI:popularbeverages:1",
+      "foodname": "Ginger Chai",
+      "submenu": [
+        "Size"
+      ],
+      "description": "Spiced tea with ginger & milk for a comforting and bold taste "
+    },
+    {
+      "foodid": "CHAI_MAADI:popularbeverages:43",
+      "foodname": "Mocha",
+      "submenu": [
+        "Caffeine option"
+      ],
+      "description": "Espresso, chocolate steaming milk and microfoam top"
+    },
+    {
+      "foodid": "CHAI_MAADI:popularbeverages:54",
+      "foodname": "South Indian Filter Coffee",
+      "submenu": [],
+      "description": "Brewed by dripping hot water through ground coffee served with milk"
+    }
+  ],
+  "submenu": {
+    "attributes": {
+      "Caffeine option": {
+        "default": "Regular",
+        "free_quantity": 0,
+        "ismand": true,
+        "list": [
+          "Regular",
+          "Decaffeinated"
+        ],
+        "max_quantity": 1,
+        "min_quantity": 0,
+        "multiple": false
+      },
+      "Espresso shot": {
+        "default": "Single Shot",
+        "free_quantity": 0,
+        "ismand": true,
+        "list": [
+          "Single Shot",
+          "Double Shot"
+        ],
+        "max_quantity": 1,
+        "min_quantity": 0,
+        "multiple": false
+      },
+      "Flavorings for cappu cremo": {
+        "default": "Caramel Syrup",
+        "ismand": true,
+        "list": [
+          "Caramel Syrup",
+          "Chocolate syrup"
+        ],
+        "max_quantity": 1,
+        "min_quantity": 1,
+        "multiple": false
+      },
+      "Flavorings for cappuccino": {
+        "default": "None Required",
+        "free_quantity": 0,
+        "ismand": true,
+        "list": [
+          "None Required",
+          "Hazelnut Syrup",
+          "Tiramisu syrup",
+          "Vanilla syrup",
+          "Irish syrup"
+        ],
+        "max_quantity": 1,
+        "min_quantity": 1,
+        "multiple": false
+      },
+      "Flavorings for coffee mocha": {
+        "default": "Chocolate syrup",
+        "ismand": true,
+        "list": [
+          "Chocolate syrup"
+        ],
+        "max_quantity": 1,
+        "min_quantity": 1,
+        "multiple": false
+      },
+      "Flavorings for cold coffee": {
+        "default": "None Required",
+        "ismand": true,
+        "list": [
+          "None Required",
+          "Caramel Syrup",
+          "Hazelnut Syrup",
+          "Tiramisu syrup",
+          "Vanilla syrup",
+          "Irish syrup",
+          "Chocolate syrup"
+        ],
+        "max_quantity": 1,
+        "min_quantity": 1,
+        "multiple": false
+      },
+      "Flavorings for flat white": {
+        "default": "None Required",
+        "ismand": true,
+        "list": [
+          "None Required",
+          "Caramel Syrup",
+          "Hazelnut Syrup",
+          "Irish syrup",
+          "Tiramisu syrup",
+          "Vanilla syrup"
+        ],
+        "max_quantity": 1,
+        "min_quantity": 1,
+        "multiple": false
+      },
+      "Flavorings for latte": {
+        "default": "None Required",
+        "ismand": true,
+        "list": [
+          "None Required",
+          "Caramel Syrup",
+          "Hazelnut Syrup",
+          "Tiramisu syrup",
+          "Vanilla syrup",
+          "Irish syrup"
+        ],
+        "max_quantity": 1,
+        "min_quantity": 1,
+        "multiple": false
+      },
+      "Flavorings for mocha frappuccino": {
+        "default": "Chocolate syrup",
+        "ismand": true,
+        "list": [
+          "Chocolate syrup"
+        ],
+        "max_quantity": 1,
+        "min_quantity": 1,
+        "multiple": false
+      },
+      "Hot or Iced Option": {
+        "default": "Hot",
+        "ismand": true,
+        "list": [
+          "Hot",
+          "Iced"
+        ],
+        "multiple": false
+      },
+      "Milk option": {
+        "default": "Dairy",
+        "free_quantity": 0,
+        "ismand": true,
+        "list": [
+          "Dairy",
+          "Almond",
+          "Oat",
+          "Slim",
+          "Soy",
+          "Lactose Free Milk"
+        ],
+        "max_quantity": 1,
+        "min_quantity": 1,
+        "multiple": false
+      },
+      "Size": {
+        "default": "Regular",
+        "ismand": true,
+        "list": [
+          "Regular",
+          "Large"
+        ],
+        "multiple": false
+      }
+    },
+    "extras": {
+      "Caffeine option": {
+        "Decaffeinated": "CHAI_MAADI:popularbeverages:29",
+        "Regular": "CHAI_MAADI:popularbeverages:28"
+      },
+      "Espresso shot": {
+        "Double Shot": "CHAI_MAADI:popularbeverages:31",
+        "Single Shot": "CHAI_MAADI:popularbeverages:30"
+      },
+      "Flavorings for cappu cremo": {
+        "Caramel Syrup": "CHAI_MAADI:popularbeverages:22",
+        "Chocolate syrup": "CHAI_MAADI:popularbeverages:27"
+      },
+      "Flavorings for cappuccino": {
+        "Hazelnut Syrup": "CHAI_MAADI:popularbeverages:23",
+        "Irish syrup": "CHAI_MAADI:popularbeverages:26",
+        "None Required": "CHAI_MAADI:popularbeverages:34",
+        "Tiramisu syrup": "CHAI_MAADI:popularbeverages:24",
+        "Vanilla syrup": "CHAI_MAADI:popularbeverages:25"
+      },
+      "Flavorings for coffee mocha": {
+        "Chocolate syrup": "CHAI_MAADI:popularbeverages:27"
+      },
+      "Flavorings for cold coffee": {
+        "Caramel Syrup": "CHAI_MAADI:popularbeverages:22",
+        "Chocolate syrup": "CHAI_MAADI:popularbeverages:27",
+        "Hazelnut Syrup": "CHAI_MAADI:popularbeverages:23",
+        "Irish syrup": "CHAI_MAADI:popularbeverages:26",
+        "None Required": "CHAI_MAADI:popularbeverages:34",
+        "Tiramisu syrup": "CHAI_MAADI:popularbeverages:24",
+        "Vanilla syrup": "CHAI_MAADI:popularbeverages:25"
+      },
+      "Flavorings for flat white": {
+        "Caramel Syrup": "CHAI_MAADI:popularbeverages:22",
+        "Hazelnut Syrup": "CHAI_MAADI:popularbeverages:23",
+        "Irish syrup": "CHAI_MAADI:popularbeverages:26",
+        "None Required": "CHAI_MAADI:popularbeverages:34",
+        "Tiramisu syrup": "CHAI_MAADI:popularbeverages:24",
+        "Vanilla syrup": "CHAI_MAADI:popularbeverages:25"
+      },
+      "Flavorings for latte": {
+        "Caramel Syrup": "CHAI_MAADI:popularbeverages:22",
+        "Hazelnut Syrup": "CHAI_MAADI:popularbeverages:23",
+        "Irish syrup": "CHAI_MAADI:popularbeverages:26",
+        "None Required": "CHAI_MAADI:popularbeverages:34",
+        "Tiramisu syrup": "CHAI_MAADI:popularbeverages:24",
+        "Vanilla syrup": "CHAI_MAADI:popularbeverages:25"
+      },
+      "Flavorings for mocha frappuccino": {
+        "Chocolate syrup": "CHAI_MAADI:popularbeverages:27"
+      },
+      "Hot or Iced Option": {
+        "Hot": "CHAI_MAADI:popularbeverages:52",
+        "Iced": "CHAI_MAADI:popularbeverages:53"
+      },
+      "Milk option": {
+        "Almond": "CHAI_MAADI:popularbeverages:20",
+        "Dairy": "CHAI_MAADI:popularbeverages:51",
+        "Lactose Free Milk": "CHAI_MAADI:popularbeverages:19",
+        "Oat": "CHAI_MAADI:popularbeverages:18",
+        "Slim": "CHAI_MAADI:popularbeverages:55",
+        "Soy": "CHAI_MAADI:popularbeverages:21"
+      },
+      "Size": {
+        "Large": "CHAI_MAADI:popularbeverages:56",
+        "Regular": "CHAI_MAADI:popularbeverages:28"
+      }
+    }
+  }
+}

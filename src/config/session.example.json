@@ -1,0 +1,10 @@
+{
+  "comment": "Copy this to session.json and fill in your SmartQ cookies",
+  "location": "gogo",
+  "qr_code": "310062707944675550",
+  "cookies": {
+    "unauthcookie": "YOUR_UNAUTHCOOKIE_HERE",
+    "cookie": "YOUR_COOKIE_HERE"
+  },
+  "updated_at": "2026-02-14T00:00:00Z"
+}
