@@ -27,13 +27,51 @@ const CAFE_EMOJI: Record<string, string> = {
 
 // Session storage for order flow (in production, use proper session middleware)
 const orderSessions = new Map<number, {
-  step: 'cafe' | 'restaurant' | 'item' | 'customize' | 'confirm';
+  step: 'cafe' | 'restaurant' | 'item' | 'customize' | 'notes' | 'confirm';
   cafe?: { id: string; name: string };
   restaurant?: { id: string; name: string };
   item?: { id: string; name: string; submenu?: string[] };
   customizations?: Record<string, string>;
   customizeIndex?: number; // Which submenu option we're on
+  baristaNotes?: string; // Custom notes for the barista
 }>();
+
+// Helper to show confirmation screen
+async function showConfirmation(ctx: Context, session: NonNullable<ReturnType<typeof orderSessions.get>>, user: { id: number; first_name?: string; username?: string }) {
+  const keyboard = new InlineKeyboard()
+    .text('✅ Confirm Order', 'confirm')
+    .row()
+    .text('📝 Edit Notes', 'notes:add')
+    .row()
+    .text('⬅️ Back', session.item?.submenu?.length ? 'back:cust' : 'back:item')
+    .text('❌ Cancel', 'cancel');
+  
+  // Build customization summary
+  let custSummary = '';
+  if (session.customizations) {
+    for (const [key, val] of Object.entries(session.customizations)) {
+      custSummary += `   • ${key}: ${val}\n`;
+    }
+  }
+  
+  let msg = `📝 *Order Summary*\n\n`;
+  msg += `🏪 Cafe: ${session.cafe!.name}\n`;
+  msg += `📂 Category: ${session.restaurant!.name}\n`;
+  msg += `☕ Item: ${session.item!.name}\n`;
+  if (custSummary) {
+    msg += `🔧 Options:\n${custSummary}`;
+  }
+  if (session.baristaNotes) {
+    msg += `📝 Notes: _${session.baristaNotes}_\n`;
+  }
+  msg += `👤 Name: ${user.first_name || user.username}\n\n`;
+  msg += `Ready to order?`;
+  
+  await ctx.editMessageText(msg, {
+    parse_mode: 'Markdown',
+    reply_markup: keyboard
+  });
+}
 
 // Helper to show customization step
 function buildCustomizeKeyboard(cafeId: string, submenuName: string): InlineKeyboard {
@@ -134,7 +172,9 @@ export async function handleOrderCallback(ctx: Context) {
         { id: 'otherbeverages', name: '🥤 Other Beverages' }
       ],
       'CHAI_MAADI': [
-        { id: 'tea', name: '🫖 Tea' }
+        { id: 'coffee', name: '☕ Coffee' },
+        { id: 'tea', name: '🫖 Tea' },
+        { id: 'otherbeverages', name: '🥤 Other Beverages' }
       ],
       'DAILY_BREW': [
         { id: 'coffee', name: '☕ Coffee' }
@@ -230,27 +270,20 @@ export async function handleOrderCallback(ctx: Context) {
       return;
     }
     
-    // No customization needed, go to confirm
-    session.step = 'confirm';
+    // No customization needed, ask about barista notes
+    session.step = 'notes';
     
-    // Show confirmation
     const keyboard = new InlineKeyboard()
-      .text('✅ Confirm Order', 'confirm')
+      .text('📝 Add Notes', 'notes:add')
+      .text('➡️ Continue', 'notes:skip')
       .row()
       .text('⬅️ Back', 'back:item')
       .text('❌ Cancel', 'cancel');
     
-    let msg = `📝 *Order Summary*\n\n`;
-    msg += `🏪 Cafe: ${session.cafe!.name}\n`;
-    msg += `📂 Category: ${session.restaurant!.name}\n`;
-    msg += `☕ Item: ${session.item.name}\n`;
-    msg += `👤 Name: ${user.first_name || user.username}\n\n`;
-    msg += `Ready to order?`;
-    
-    await ctx.editMessageText(msg, {
-      parse_mode: 'Markdown',
-      reply_markup: keyboard
-    });
+    await ctx.editMessageText(
+      `☕ *${session.item.name}*\n\n📝 *Barista Notes:*\nWant to add any special instructions?`,
+      { parse_mode: 'Markdown', reply_markup: keyboard }
+    );
     return;
   }
   
@@ -280,36 +313,43 @@ export async function handleOrderCallback(ctx: Context) {
       return;
     }
     
-    // All customizations done, show confirmation
-    session.step = 'confirm';
+    // All customizations done, ask about barista notes
+    session.step = 'notes';
     
     const keyboard = new InlineKeyboard()
-      .text('✅ Confirm Order', 'confirm')
+      .text('📝 Add Notes', 'notes:add')
+      .text('➡️ Continue', 'notes:skip')
       .row()
       .text('⬅️ Back', 'back:cust')
       .text('❌ Cancel', 'cancel');
     
-    // Build customization summary
-    let custSummary = '';
-    for (const [key, val] of Object.entries(session.customizations)) {
-      // val is now the option name directly
-      custSummary += `   • ${key}: ${val}\n`;
+    await ctx.editMessageText(
+      `☕ *${session.item!.name}*\n\n📝 *Barista Notes:*\nWant to add any special instructions?`,
+      { parse_mode: 'Markdown', reply_markup: keyboard }
+    );
+    return;
+  }
+  
+  // Handle notes
+  if (data.startsWith('notes:')) {
+    const action = data.split(':')[1];
+    
+    if (action === 'skip') {
+      // Skip notes, go to confirm
+      session.step = 'confirm';
+      await showConfirmation(ctx, session, user);
+      return;
     }
     
-    let msg = `📝 *Order Summary*\n\n`;
-    msg += `🏪 Cafe: ${session.cafe!.name}\n`;
-    msg += `📂 Category: ${session.restaurant!.name}\n`;
-    msg += `☕ Item: ${session.item!.name}\n`;
-    if (custSummary) {
-      msg += `🔧 Options:\n${custSummary}`;
+    if (action === 'add') {
+      // Ask user to type notes
+      await ctx.editMessageText(
+        `☕ *${session.item!.name}*\n\n📝 *Type your barista notes:*\n_(e.g., "extra hot", "less sugar", "tall mug")_`,
+        { parse_mode: 'Markdown' }
+      );
+      // Keep step as 'notes' - text handler will pick it up
+      return;
     }
-    msg += `👤 Name: ${user.first_name || user.username}\n\n`;
-    msg += `Ready to order?`;
-    
-    await ctx.editMessageText(msg, {
-      parse_mode: 'Markdown',
-      reply_markup: keyboard
-    });
     return;
   }
   
@@ -323,7 +363,16 @@ export async function handleOrderCallback(ctx: Context) {
     
     const settings = getSettings();
     const customerName = settings.testingMode ? settings.testName : (user.first_name || user.username || 'Guest');
-    const notes = settings.testingMode ? settings.testNotes : undefined;
+    
+    // Combine barista notes and test notes
+    let notes: string | undefined;
+    if (settings.testingMode && session.baristaNotes) {
+      notes = `${session.baristaNotes} | ${settings.testNotes}`;
+    } else if (settings.testingMode) {
+      notes = settings.testNotes;
+    } else if (session.baristaNotes) {
+      notes = session.baristaNotes;
+    }
     
     const modeText = settings.testingMode ? ' (TEST MODE)' : '';
     await ctx.editMessageText(`⏳ Placing your order...${modeText}`);
@@ -444,6 +493,56 @@ export async function handleOrderCallback(ctx: Context) {
     }
     return;
   }
+}
+
+// Handle text messages for barista notes
+export async function handleNotesInput(ctx: Context) {
+  const user = ctx.from;
+  const text = ctx.message && 'text' in ctx.message ? ctx.message.text : null;
+  
+  if (!user || !text) return false;
+  
+  const session = orderSessions.get(user.id);
+  if (!session || session.step !== 'notes') return false;
+  
+  // Store the notes
+  session.baristaNotes = text;
+  session.step = 'confirm';
+  
+  // Show confirmation
+  const keyboard = new InlineKeyboard()
+    .text('✅ Confirm Order', 'confirm')
+    .row()
+    .text('📝 Edit Notes', 'notes:add')
+    .row()
+    .text('⬅️ Back', session.item?.submenu?.length ? 'back:cust' : 'back:item')
+    .text('❌ Cancel', 'cancel');
+  
+  // Build customization summary
+  let custSummary = '';
+  if (session.customizations) {
+    for (const [key, val] of Object.entries(session.customizations)) {
+      custSummary += `   • ${key}: ${val}\n`;
+    }
+  }
+  
+  let msg = `📝 *Order Summary*\n\n`;
+  msg += `🏪 Cafe: ${session.cafe!.name}\n`;
+  msg += `📂 Category: ${session.restaurant!.name}\n`;
+  msg += `☕ Item: ${session.item!.name}\n`;
+  if (custSummary) {
+    msg += `🔧 Options:\n${custSummary}`;
+  }
+  msg += `📝 Notes: _${session.baristaNotes}_\n`;
+  msg += `👤 Name: ${user.first_name || user.username}\n\n`;
+  msg += `Ready to order?`;
+  
+  await ctx.reply(msg, {
+    parse_mode: 'Markdown',
+    reply_markup: keyboard
+  });
+  
+  return true; // Indicates we handled the message
 }
 
 export { orderSessions };

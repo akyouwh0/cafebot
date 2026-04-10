@@ -1,5 +1,5 @@
 import { Context, InlineKeyboard } from 'grammy';
-import { getUserUsuals, getUsualById, saveUsualOrder, deleteUsualOrder, UsualOrder } from '../db';
+import { getUserUsuals, getUsualById, saveUsualOrder, deleteUsualOrder, logOrder, UsualOrder } from '../db';
 import { placeOrder } from '../api/smartq';
 
 // Pending saves - waiting for user to provide a label
@@ -30,7 +30,7 @@ export async function handleUsuals(ctx: Context) {
   const user = ctx.from;
   if (!user) return;
 
-  const usuals = getUserUsuals(user.id);
+  const usuals = getUserUsuals(user.id).sort((a, b) => a.label.localeCompare(b.label));
 
   if (usuals.length === 0) {
     await ctx.reply(
@@ -145,6 +145,9 @@ export async function handleUsualCallback(ctx: Context) {
     );
 
     if (result.success) {
+      // Log the order for stats
+      logOrder(user.id, usual.cafe_id, usual.food_name, result.orderId);
+      
       const emoji = CAFE_EMOJI[usual.cafe_id] || '☕';
       let custSummary = '';
       if (usual.customizations) {
@@ -172,7 +175,7 @@ export async function handleUsualCallback(ctx: Context) {
 
   // Manage saved orders
   if (data === 'usual:manage') {
-    const usuals = getUserUsuals(user.id);
+    const usuals = getUserUsuals(user.id).sort((a, b) => a.label.localeCompare(b.label));
     
     if (usuals.length === 0) {
       await ctx.editMessageText('No saved orders to manage.');
@@ -202,7 +205,7 @@ export async function handleUsualCallback(ctx: Context) {
     }
     
     // Refresh the manage view
-    const usuals = getUserUsuals(user.id);
+    const usuals = getUserUsuals(user.id).sort((a, b) => a.label.localeCompare(b.label));
     if (usuals.length === 0) {
       await ctx.editMessageText('✅ All saved orders deleted.');
       return;
@@ -224,7 +227,7 @@ export async function handleUsualCallback(ctx: Context) {
   // Back to usuals list
   if (data === 'usual:back') {
     // Re-trigger usuals list
-    const usuals = getUserUsuals(user.id);
+    const usuals = getUserUsuals(user.id).sort((a, b) => a.label.localeCompare(b.label));
     const keyboard = new InlineKeyboard();
     
     for (const usual of usuals) {

@@ -203,6 +203,18 @@ export async function placeOrder(
 ): Promise<OrderResult> {
   console.log('[placeOrder] Starting:', { customerName, cafeId, restaurantId, foodId, quantity, customizations, notes });
   
+  // Get cached menu data if available
+  const cacheKey = `${cafeId}:${restaurantId}`;
+  const cachedData = menuCache[cacheKey];
+  
+  // If not in cache, fetch it first
+  if (!cachedData) {
+    console.log('[placeOrder] Menu not in cache, fetching...');
+    await getMenuItems(cafeId, restaurantId);
+  }
+  
+  const menuData = menuCache[cacheKey];
+  
   return placeOrderDirect(
     customerName,
     cafeId,
@@ -210,7 +222,8 @@ export async function placeOrder(
     foodId,
     quantity,
     customizations,
-    notes
+    notes,
+    menuData ? { menu: menuData.menu as any[], submenu: menuData.submenu } : undefined
   );
 }
 

@@ -1,0 +1,171 @@
+{
+  "menu": [
+    {
+      "foodid": "HIC_CUP:otherbeverages:80",
+      "foodname": "Badam Milk",
+      "description": "Almond powder with milk",
+      "submenu": [
+        "Milk option"
+      ]
+    },
+    {
+      "foodid": "HIC_CUP:otherbeverages:38",
+      "foodname": "Boost",
+      "description": "Boost powder with milk",
+      "submenu": [
+        "Milk option"
+      ]
+    },
+    {
+      "foodid": "HIC_CUP:otherbeverages:39",
+      "foodname": "Bournvita",
+      "description": "Bournvita powder with milk",
+      "submenu": [
+        "Milk option"
+      ]
+    },
+    {
+      "foodid": "HIC_CUP:otherbeverages:15",
+      "foodname": "Chocolate Milkshake",
+      "description": "Blend of milk and ice cream",
+      "submenu": [
+        "Milk option",
+        "Flavorings for chocolate milkshake"
+      ]
+    },
+    {
+      "foodid": "HIC_CUP:otherbeverages:37",
+      "foodname": "Horlicks",
+      "description": "Horlicks powder with milk",
+      "submenu": [
+        "Milk option"
+      ]
+    },
+    {
+      "foodid": "HIC_CUP:otherbeverages:10",
+      "foodname": "Hot Chocolate",
+      "description": "Chocolate and steamed milk of choice",
+      "submenu": [
+        "Milk option",
+        "Flavorings for hot chocolate"
+      ]
+    },
+    {
+      "foodid": "HIC_CUP:otherbeverages:86",
+      "foodname": "Hot Milk",
+      "description": "",
+      "submenu": []
+    },
+    {
+      "foodid": "HIC_CUP:otherbeverages:83",
+      "foodname": "Immunity Booster",
+      "description": "Ginger, black pepper, cinnamon, ajwain, turmeric steeped with hot water",
+      "submenu": []
+    },
+    {
+      "foodid": "HIC_CUP:otherbeverages:81",
+      "foodname": "Peach Iced Tea",
+      "description": "Tea decoction, lemon juice, mint, peach syrup and honey",
+      "submenu": []
+    },
+    {
+      "foodid": "HIC_CUP:otherbeverages:82",
+      "foodname": "Regular Iced Tea",
+      "description": "Tea decoction, lemon juice, mint and honey",
+      "submenu": []
+    },
+    {
+      "foodid": "HIC_CUP:otherbeverages:36",
+      "foodname": "Saffron Almond Montee",
+      "description": "Milk along with saffron and almond powder",
+      "submenu": [
+        "Milk option"
+      ]
+    },
+    {
+      "foodid": "HIC_CUP:otherbeverages:35",
+      "foodname": "Turmeric Latte",
+      "description": "Turmeric powder, cinnamon stick, dry ginger and honey with milk of choice",
+      "submenu": [
+        "Milk option"
+      ]
+    },
+    {
+      "foodid": "HIC_CUP:otherbeverages:12",
+      "foodname": "Vanilla Milkshake",
+      "description": "Blend of milk and ice cream",
+      "submenu": [
+        "Milk option",
+        "Flavorings for vanilla milkshake"
+      ]
+    }
+  ],
+  "submenu": {
+    "attributes": {
+      "Flavorings for chocolate milkshake": {
+        "default": "Chocolate syrup",
+        "ismand": true,
+        "list": [
+          "Chocolate syrup"
+        ],
+        "max_quantity": 1,
+        "min_quantity": 1,
+        "multiple": false
+      },
+      "Flavorings for hot chocolate": {
+        "default": "Cocoa powder",
+        "free_quantity": 0,
+        "ismand": true,
+        "list": [
+          "Cocoa powder"
+        ],
+        "max_quantity": 1,
+        "min_quantity": 1,
+        "multiple": false
+      },
+      "Flavorings for vanilla milkshake": {
+        "default": "Vanilla syrup",
+        "ismand": true,
+        "list": [
+          "Vanilla syrup"
+        ],
+        "max_quantity": 1,
+        "min_quantity": 1,
+        "multiple": false
+      },
+      "Milk option": {
+        "default": "Toned Milk",
+        "free_quantity": 0,
+        "ismand": true,
+        "list": [
+          "Toned Milk",
+          "Oat Milk",
+          "Slim Milk",
+          "Soy Milk",
+          "Lactose Free Milk"
+        ],
+        "max_quantity": 1,
+        "min_quantity": 1,
+        "multiple": false
+      }
+    },
+    "extras": {
+      "Flavorings for chocolate milkshake": {
+        "Chocolate syrup": "HIC_CUP:otherbeverages:27"
+      },
+      "Flavorings for hot chocolate": {
+        "Cocoa powder": "HIC_CUP:otherbeverages:85"
+      },
+      "Flavorings for vanilla milkshake": {
+        "Vanilla syrup": "HIC_CUP:otherbeverages:25"
+      },
+      "Milk option": {
+        "Lactose Free Milk": "HIC_CUP:otherbeverages:19",
+        "Oat Milk": "HIC_CUP:otherbeverages:18",
+        "Slim Milk": "HIC_CUP:otherbeverages:17",
+        "Soy Milk": "HIC_CUP:otherbeverages:21",
+        "Toned Milk": "HIC_CUP:otherbeverages:16"
+      }
+    }
+  }
+}

@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import { Bot } from 'grammy';
 import { handleStart, handleStats } from './handlers/start';
-import { handleNew, handleOrderCallback } from './handlers/newOrder';
+import { handleNew, handleOrderCallback, handleNotesInput } from './handlers/newOrder';
 import { handleUsuals, handleUsualCallback, handleSaveLabel, hasPendingSave } from './handlers/usuals';
 
 const BOT_TOKEN = process.env.BOT_TOKEN;
@@ -29,11 +29,17 @@ bot.command('usuals', handleUsuals); // Alias
 bot.command('stats', handleStats);
 
 // Callback queries
-bot.callbackQuery(/^(cafe:|rest:|item:|cust:|confirm|cancel|back:)/, handleOrderCallback);
+bot.callbackQuery(/^(cafe:|rest:|item:|cust:|notes:|confirm|cancel|back:)/, handleOrderCallback);
 bot.callbackQuery(/^usual:/, handleUsualCallback);
 
-// Handle text messages (for save label)
+// Handle text messages (for barista notes and save label)
 bot.on('message:text', async (ctx, next) => {
+  // Check if user is entering barista notes
+  if (ctx.from) {
+    const notesHandled = await handleNotesInput(ctx);
+    if (notesHandled) return;
+  }
+  
   // Check if user is in "save label" flow
   if (ctx.from && hasPendingSave(ctx.from.id)) {
     const handled = await handleSaveLabel(ctx);

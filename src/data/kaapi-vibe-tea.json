@@ -1,7 +1,7 @@
 {
   "menu": [
     {
-      "foodid": "CHAI_MAADI:tea:21",
+      "foodid": "KAAPI_VIBE:tea:21",
       "foodname": "Cardamom Chai",
       "description": "Fragrant milk tea with an infusion of Green Cardamom",
       "submenu": [
@@ -9,7 +9,7 @@
       ]
     },
     {
-      "foodid": "CHAI_MAADI:tea:20",
+      "foodid": "KAAPI_VIBE:tea:20",
       "foodname": "Ginger Chai",
       "description": "Spiced tea with ginger & milk for a comforting and bold taste ",
       "submenu": [
@@ -17,33 +17,9 @@
       ]
     },
     {
-      "foodid": "CHAI_MAADI:tea:4",
-      "foodname": "Kahwa",
-      "description": "A classic drink from the Himalayan valley, soul-warming and resonates with the power of Indian spices",
-      "submenu": [
-        "Size"
-      ]
-    },
-    {
-      "foodid": "CHAI_MAADI:tea:5",
-      "foodname": "Kesar Chai",
-      "description": "Milk based tea, infused with saffron for an aromatic experience ",
-      "submenu": [
-        "Size"
-      ]
-    },
-    {
-      "foodid": "CHAI_MAADI:tea:2",
-      "foodname": "Masala Chai",
-      "description": "Spiced Indian tea leaves, ginger powder, cardamom powder, clove powder, cinnamon powder, black pepper powder with milk ",
-      "submenu": [
-        "Size"
-      ]
-    },
-    {
-      "foodid": "CHAI_MAADI:tea:22",
+      "foodid": "KAAPI_VIBE:tea:22",
       "foodname": "Reboot Chai",
-      "description": "Black tea served with a hint of lemon, fresh mint & ginger ",
+      "description": "Black tea served with a hint of lemon & fresh mint ",
       "submenu": [
         "Size"
       ]
@@ -168,8 +144,8 @@
       "Milk options": {},
       "Regular tea": {},
       "Size": {
-        "Large": "CHAI_MAADI:tea:27",
-        "Regular": "CHAI_MAADI:tea:26"
+        "Large": "KAAPI_VIBE:tea:27",
+        "Regular": "KAAPI_VIBE:tea:26"
       }
     }
   }

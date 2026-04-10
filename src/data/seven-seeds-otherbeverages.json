@@ -1,7 +1,7 @@
 {
   "menu": [
     {
-      "foodid": "CHAI_MAADI:otherbeverages:38",
+      "foodid": "SEVEN_SEEDS:otherbeverages:38",
       "foodname": "Boost",
       "description": "Boost powder with milk",
       "submenu": [
@@ -9,7 +9,7 @@
       ]
     },
     {
-      "foodid": "CHAI_MAADI:otherbeverages:39",
+      "foodid": "SEVEN_SEEDS:otherbeverages:39",
       "foodname": "Bournvita",
       "description": "Bournvita powder with milk",
       "submenu": [
@@ -17,7 +17,7 @@
       ]
     },
     {
-      "foodid": "CHAI_MAADI:otherbeverages:37",
+      "foodid": "SEVEN_SEEDS:otherbeverages:37",
       "foodname": "Horlicks",
       "description": "Horlicks and steamed milk of choice",
       "submenu": [
@@ -25,7 +25,7 @@
       ]
     },
     {
-      "foodid": "CHAI_MAADI:otherbeverages:10",
+      "foodid": "SEVEN_SEEDS:otherbeverages:10",
       "foodname": "Hot Chocolate",
       "description": "Chocolate and steamed milk of choice",
       "submenu": [
@@ -33,15 +33,16 @@
       ]
     },
     {
-      "foodid": "CHAI_MAADI:otherbeverages:90",
+      "foodid": "SEVEN_SEEDS:otherbeverages:90",
       "foodname": "Milk",
       "description": "",
       "submenu": [
+        "Hot Or Cold",
         "Milk option"
       ]
     },
     {
-      "foodid": "CHAI_MAADI:otherbeverages:35",
+      "foodid": "SEVEN_SEEDS:otherbeverages:35",
       "foodname": "Turmeric Latte",
       "description": "A golden blend of turmeric, milk, and spices offering warmth, comfort, and natural anti-inflammatory benefits.",
       "submenu": [
@@ -82,15 +83,27 @@
         "min_quantity": 1,
         "multiple": false
       },
+      "Hot Or Cold": {
+        "default": "Hot Milk",
+        "free_quantity": 0,
+        "ismand": true,
+        "list": [
+          "Hot Milk",
+          "Cold Milk"
+        ],
+        "max_quantity": 1,
+        "min_quantity": 1,
+        "multiple": false
+      },
       "Milk option": {
         "default": "Dairy",
         "free_quantity": 0,
         "ismand": true,
         "list": [
+          "Almond",
           "Dairy",
           "Oat",
           "Soy",
-          "Almond",
           "Lactose Free Milk"
         ],
         "max_quantity": 1,
@@ -100,20 +113,24 @@
     },
     "extras": {
       "Flavorings for chocolate milkshake": {
-        "Chocolate syrup": "CHAI_MAADI:otherbeverages:27"
+        "Chocolate syrup": "SEVEN_SEEDS:otherbeverages:27"
       },
       "Flavorings for hot chocolate": {
-        "Cocoa powder": "CHAI_MAADI:otherbeverages:85"
+        "Cocoa powder": "SEVEN_SEEDS:otherbeverages:85"
       },
       "Flavorings for vanilla milkshake": {
-        "Vanilla syrup": "CHAI_MAADI:otherbeverages:25"
+        "Vanilla syrup": "SEVEN_SEEDS:otherbeverages:25"
+      },
+      "Hot Or Cold": {
+        "Cold Milk": "SEVEN_SEEDS:otherbeverages:92",
+        "Hot Milk": "SEVEN_SEEDS:otherbeverages:91"
       },
       "Milk option": {
-        "Almond": "CHAI_MAADI:otherbeverages:20",
-        "Dairy": "CHAI_MAADI:otherbeverages:86",
-        "Lactose Free Milk": "CHAI_MAADI:otherbeverages:19",
-        "Oat": "CHAI_MAADI:otherbeverages:18",
-        "Soy": "CHAI_MAADI:otherbeverages:21"
+        "Almond": "SEVEN_SEEDS:otherbeverages:20",
+        "Dairy": "SEVEN_SEEDS:otherbeverages:86",
+        "Lactose Free Milk": "SEVEN_SEEDS:otherbeverages:19",
+        "Oat": "SEVEN_SEEDS:otherbeverages:18",
+        "Soy": "SEVEN_SEEDS:otherbeverages:21"
       }
     }
   }

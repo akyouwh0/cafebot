@@ -1,52 +1,46 @@
 {
   "menu": [
     {
-      "foodid": "CHAI_MAADI:tea:21",
-      "foodname": "Cardamom Chai",
-      "description": "Fragrant milk tea with an infusion of Green Cardamom",
-      "submenu": [
-        "Size"
-      ]
+      "foodid": "HIC_CUP:tea:4",
+      "foodname": "Dum Wali Chai",
+      "description": "Tea leaves, clove powder with milk",
+      "submenu": []
     },
     {
-      "foodid": "CHAI_MAADI:tea:20",
-      "foodname": "Ginger Chai",
-      "description": "Spiced tea with ginger & milk for a comforting and bold taste ",
-      "submenu": [
-        "Size"
-      ]
+      "foodid": "HIC_CUP:tea:3",
+      "foodname": "Elaichi Chai",
+      "description": "Fragrant Indian tea leaves with milk infused with cardamom.",
+      "submenu": []
     },
     {
-      "foodid": "CHAI_MAADI:tea:4",
-      "foodname": "Kahwa",
-      "description": "A classic drink from the Himalayan valley, soul-warming and resonates with the power of Indian spices",
-      "submenu": [
-        "Size"
-      ]
+      "foodid": "HIC_CUP:tea:1",
+      "foodname": "Kadak Adrak Wali Chai",
+      "description": "Spicy ginger-infused Indian tea leaves with milk",
+      "submenu": []
     },
     {
-      "foodid": "CHAI_MAADI:tea:5",
-      "foodname": "Kesar Chai",
-      "description": "Milk based tea, infused with saffron for an aromatic experience ",
-      "submenu": [
-        "Size"
-      ]
-    },
-    {
-      "foodid": "CHAI_MAADI:tea:2",
+      "foodid": "HIC_CUP:tea:2",
       "foodname": "Masala Chai",
       "description": "Spiced Indian tea leaves, ginger powder, cardamom powder, clove powder, cinnamon powder, black pepper powder with milk ",
-      "submenu": [
-        "Size"
-      ]
+      "submenu": []
     },
     {
-      "foodid": "CHAI_MAADI:tea:22",
+      "foodid": "HIC_CUP:tea:6",
+      "foodname": "Monday Morning Chai",
+      "description": "Tea leaves, ginger, black pepper powder with milk",
+      "submenu": []
+    },
+    {
+      "foodid": "HIC_CUP:tea:5",
       "foodname": "Reboot Chai",
-      "description": "Black tea served with a hint of lemon, fresh mint & ginger ",
-      "submenu": [
-        "Size"
-      ]
+      "description": "Tea leaves, lemon, mint, ginger, honey with hot water",
+      "submenu": []
+    },
+    {
+      "foodid": "HIC_CUP:tea:7",
+      "foodname": "Regular Chai",
+      "description": "Tea leaves with milk",
+      "submenu": []
     }
   ],
   "submenu": {
@@ -146,15 +140,6 @@
           "Elaichi chai"
         ],
         "multiple": false
-      },
-      "Size": {
-        "default": "Regular",
-        "ismand": true,
-        "list": [
-          "Regular",
-          "Large"
-        ],
-        "multiple": false
       }
     },
     "extras": {
@@ -166,11 +151,7 @@
       "Green tea": {},
       "Milk option": {},
       "Milk options": {},
-      "Regular tea": {},
-      "Size": {
-        "Large": "CHAI_MAADI:tea:27",
-        "Regular": "CHAI_MAADI:tea:26"
-      }
+      "Regular tea": {}
     }
   }
 }

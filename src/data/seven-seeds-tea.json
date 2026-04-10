@@ -1,7 +1,13 @@
 {
   "menu": [
     {
-      "foodid": "CHAI_MAADI:tea:21",
+      "foodid": "SEVEN_SEEDS:tea:24",
+      "foodname": "Camomile & Lemongrass",
+      "description": "Organic infusion of pure chamomile flowers & lemongrass leaves ",
+      "submenu": []
+    },
+    {
+      "foodid": "SEVEN_SEEDS:tea:21",
       "foodname": "Cardamom Chai",
       "description": "Fragrant milk tea with an infusion of Green Cardamom",
       "submenu": [
@@ -9,7 +15,13 @@
       ]
     },
     {
-      "foodid": "CHAI_MAADI:tea:20",
+      "foodid": "SEVEN_SEEDS:tea:25",
+      "foodname": "English Breakfast",
+      "description": "A classic blend of tea offering rich and smooth taste ",
+      "submenu": []
+    },
+    {
+      "foodid": "SEVEN_SEEDS:tea:20",
       "foodname": "Ginger Chai",
       "description": "Spiced tea with ginger & milk for a comforting and bold taste ",
       "submenu": [
@@ -17,23 +29,7 @@
       ]
     },
     {
-      "foodid": "CHAI_MAADI:tea:4",
-      "foodname": "Kahwa",
-      "description": "A classic drink from the Himalayan valley, soul-warming and resonates with the power of Indian spices",
-      "submenu": [
-        "Size"
-      ]
-    },
-    {
-      "foodid": "CHAI_MAADI:tea:5",
-      "foodname": "Kesar Chai",
-      "description": "Milk based tea, infused with saffron for an aromatic experience ",
-      "submenu": [
-        "Size"
-      ]
-    },
-    {
-      "foodid": "CHAI_MAADI:tea:2",
+      "foodid": "SEVEN_SEEDS:tea:2",
       "foodname": "Masala Chai",
       "description": "Spiced Indian tea leaves, ginger powder, cardamom powder, clove powder, cinnamon powder, black pepper powder with milk ",
       "submenu": [
@@ -41,12 +37,18 @@
       ]
     },
     {
-      "foodid": "CHAI_MAADI:tea:22",
+      "foodid": "SEVEN_SEEDS:tea:22",
       "foodname": "Reboot Chai",
-      "description": "Black tea served with a hint of lemon, fresh mint & ginger ",
+      "description": "Black tea served with a hint of lemon, fresh mint & ginger",
       "submenu": [
         "Size"
       ]
+    },
+    {
+      "foodid": "SEVEN_SEEDS:tea:23",
+      "foodname": "Rosehip & Hibiscus",
+      "description": "",
+      "submenu": []
     }
   ],
   "submenu": {
@@ -168,8 +170,8 @@
       "Milk options": {},
       "Regular tea": {},
       "Size": {
-        "Large": "CHAI_MAADI:tea:27",
-        "Regular": "CHAI_MAADI:tea:26"
+        "Large": "SEVEN_SEEDS:tea:27",
+        "Regular": "SEVEN_SEEDS:tea:26"
       }
     }
   }

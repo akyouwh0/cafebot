@@ -258,12 +258,13 @@ export async function placeOrderDirect(
   foodId: string,
   quantity: number = 1,
   customizations?: Record<string, string>,
-  notes?: string
+  notes?: string,
+  cachedMenuData?: { menu: any[]; submenu: any }
 ): Promise<OrderResult> {
   console.log('[SmartQ API] Placing order:', { customerName, cafeId, restaurantId, foodId, quantity, customizations, notes });
   
-  // Load menu data
-  const menuData = loadMenuData(cafeId.toLowerCase().replace('_', '-'), restaurantId);
+  // Use cached menu data if provided, otherwise load from file
+  const menuData = cachedMenuData || loadMenuData(cafeId.toLowerCase().replace('_', '-'), restaurantId);
   if (!menuData) {
     return { success: false, error: `Menu data not found for ${cafeId}:${restaurantId}` };
   }
@@ -278,15 +279,24 @@ export async function placeOrderDirect(
   const selectedOptions: Record<string, { name: string; foodid: string }> = {};
   
   for (const submenuName of (foodItem.submenu || [])) {
-    const submenuData = menuData.submenu[submenuName];
-    if (!submenuData) continue;
+    // Look for submenu data in the correct structure (attributes + extras)
+    const attributes = menuData.submenu?.attributes?.[submenuName];
+    const extras = menuData.submenu?.extras?.[submenuName];
+    
+    if (!attributes || !extras) {
+      console.log(`[SmartQ API] Submenu data not found for: ${submenuName}`);
+      continue;
+    }
     
     // Use customization if provided, otherwise use default
-    const selectedName = customizations?.[submenuName] || submenuData.default;
-    const selectedFoodId = submenuData.options[selectedName];
+    const selectedName = customizations?.[submenuName] || attributes.default;
+    const selectedFoodId = extras[selectedName];
     
     if (selectedFoodId) {
       selectedOptions[submenuName] = { name: selectedName, foodid: selectedFoodId };
+      console.log(`[SmartQ API] Selected option: ${submenuName} = ${selectedName} (${selectedFoodId})`);
+    } else {
+      console.log(`[SmartQ API] No food ID found for: ${submenuName} = ${selectedName}`);
     }
   }
   

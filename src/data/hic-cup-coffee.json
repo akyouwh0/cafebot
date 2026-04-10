@@ -1,102 +1,155 @@
 {
   "menu": [
     {
-      "foodid": "SEVEN_SEEDS:coffee:8",
+      "foodid": "HIC_CUP:coffee:8",
       "foodname": "Americano",
       "description": "Espresso cut with water",
+      "submenu": []
+    },
+    {
+      "foodid": "HIC_CUP:coffee:43",
+      "foodname": "Cafe Mocha",
+      "description": "Espresso, chocolate steaming milk and microfoam top",
       "submenu": [
         "Caffeine option",
-        "Hot or Iced Option"
+        "Espresso shot",
+        "Milk option",
+        "Flavorings for coffee mocha"
       ]
     },
     {
-      "foodid": "SEVEN_SEEDS:coffee:0",
+      "foodid": "HIC_CUP:coffee:0",
       "foodname": "Cappuccino",
       "description": "Espresso with textured velvety microfoam",
       "submenu": [
         "Caffeine option",
-        "Milk option"
+        "Espresso shot",
+        "Milk option",
+        "Flavorings for cappuccino"
       ]
     },
     {
-      "foodid": "SEVEN_SEEDS:coffee:45",
-      "foodname": "Cold Brew",
-      "description": "Steeped ground coffee in cold filtered water overnight, resulting in a concentrated coffee, served over ice (Smooth, strong syrupy texture)",
-      "submenu": []
+      "foodid": "HIC_CUP:coffee:45",
+      "foodname": "Cold Coffee",
+      "description": "Espresso with ice and milk along with the option of vanilla ice cream",
+      "submenu": [
+        "Caffeine option",
+        "Espresso shot",
+        "Milk option",
+        "Flavorings for cold coffee"
+      ]
     },
     {
-      "foodid": "SEVEN_SEEDS:coffee:47",
+      "foodid": "HIC_CUP:coffee:47",
       "foodname": "Cortado",
       "description": "Equal parts espresso to milk",
       "submenu": [
         "Caffeine option",
+        "Espresso shot",
         "Milk option"
       ]
     },
     {
-      "foodid": "SEVEN_SEEDS:coffee:5",
+      "foodid": "HIC_CUP:coffee:5",
       "foodname": "Espresso",
       "description": "Concentrated shot of coffee",
       "submenu": []
     },
     {
-      "foodid": "SEVEN_SEEDS:coffee:48",
-      "foodname": "Flat White",
-      "description": "Espresso with less steamed milk and thin layer of microfoam",
+      "foodid": "HIC_CUP:coffee:11",
+      "foodname": "Filter Coffee",
+      "description": "Brewed by dripping hot water through ground coffee served with milk",
       "submenu": [
-        "Caffeine option",
+        "Espresso shot",
         "Milk option"
       ]
     },
     {
-      "foodid": "SEVEN_SEEDS:coffee:1",
+      "foodid": "HIC_CUP:coffee:48",
+      "foodname": "Flat White",
+      "description": "Espresso with less steamed milk and thin layer of microfoam",
+      "submenu": [
+        "Caffeine option",
+        "Espresso shot",
+        "Milk option",
+        "Flavorings for flat white"
+      ]
+    },
+    {
+      "foodid": "HIC_CUP:coffee:49",
+      "foodname": "Iced Americano",
+      "description": "",
+      "submenu": []
+    },
+    {
+      "foodid": "HIC_CUP:coffee:50",
+      "foodname": "Iced Cortado",
+      "description": "",
+      "submenu": []
+    },
+    {
+      "foodid": "HIC_CUP:coffee:51",
+      "foodname": "Iced Espresso",
+      "description": "",
+      "submenu": []
+    },
+    {
+      "foodid": "HIC_CUP:coffee:52",
+      "foodname": "Iced Latte",
+      "description": "",
+      "submenu": []
+    },
+    {
+      "foodid": "HIC_CUP:coffee:53",
+      "foodname": "Iced Mocha",
+      "description": "",
+      "submenu": []
+    },
+    {
+      "foodid": "HIC_CUP:coffee:1",
       "foodname": "Latte",
       "description": "Espresso with steamed milk and microfoam top (the milkiest drink)",
       "submenu": [
         "Caffeine option",
+        "Espresso shot",
         "Milk option",
-        "Hot or Iced Option"
+        "Flavorings for latte"
       ]
     },
     {
-      "foodid": "SEVEN_SEEDS:coffee:40",
+      "foodid": "HIC_CUP:coffee:40",
       "foodname": "Macchiato",
       "description": "Espresso with a dollop of microfoam",
       "submenu": []
     },
     {
-      "foodid": "SEVEN_SEEDS:coffee:43",
-      "foodname": "Mocha",
-      "description": "Espresso, chocolate with steamed milk and microfoam top",
+      "foodid": "HIC_CUP:coffee:44",
+      "foodname": "Mocha Frappuccino",
+      "description": "Espresso, chocolate, ice cream and milk of choice blended together with ice",
       "submenu": [
         "Caffeine option",
+        "Espresso shot",
         "Milk option",
-        "Hot or Iced Option"
+        "Flavorings for mocha frappuccino"
       ]
     },
     {
-      "foodid": "SEVEN_SEEDS:coffee:46",
+      "foodid": "HIC_CUP:coffee:46",
       "foodname": "Piccolo",
       "description": "Espresso with steamed milk and little foam (baby latte)",
       "submenu": [
         "Caffeine option",
+        "Espresso shot",
         "Milk option"
       ]
     },
     {
-      "foodid": "SEVEN_SEEDS:coffee:49",
-      "foodname": "Pour over",
-      "description": "Also known as filter coffee, is a manually brewed coffee made by pouring hot water slowly over a cone of freshly ground coffee (Delicate, clean and fruity on the palate). A 3 mins brewing time gets you the best of the aromas of the blend !",
+      "foodid": "HIC_CUP:coffee:56",
+      "foodname": "Turmeric Latte",
+      "description": "A golden blend of turmeric, milk, and spices offering warmth, comfort, and natural anti-inflammatory benefits.",
       "submenu": [
-        "Variety",
-        "Hot or Iced Option"
+        "Milk option"
       ]
-    },
-    {
-      "foodid": "SEVEN_SEEDS:coffee:11",
-      "foodname": "South Indian Filter Coffee",
-      "description": "Brewed by dripping hot water through ground coffee served with milk",
-      "submenu": []
     }
   ],
   "submenu": {
@@ -217,107 +270,79 @@
         "min_quantity": 1,
         "multiple": false
       },
-      "Hot or Iced Option": {
-        "default": "Hot",
-        "ismand": true,
-        "list": [
-          "Hot",
-          "Iced"
-        ],
-        "multiple": false
-      },
       "Milk option": {
-        "default": "Dairy",
+        "default": "Toned Milk",
         "free_quantity": 0,
         "ismand": true,
         "list": [
-          "Almond",
-          "Dairy",
-          "Oat",
-          "Slim",
-          "Soy",
+          "Toned Milk",
+          "Oat Milk",
+          "Slim Milk",
+          "Soy Milk",
           "Lactose Free Milk"
         ],
         "max_quantity": 1,
         "min_quantity": 1,
         "multiple": false
-      },
-      "Variety": {
-        "default": "VLGE",
-        "ismand": true,
-        "list": [
-          "VLGE",
-          "Project Pearl"
-        ],
-        "multiple": false
       }
     },
     "extras": {
       "Caffeine option": {
-        "Decaffeinated": "SEVEN_SEEDS:coffee:29",
-        "Regular": "SEVEN_SEEDS:coffee:28"
+        "Decaffeinated": "HIC_CUP:coffee:29",
+        "Regular": "HIC_CUP:coffee:28"
       },
       "Espresso shot": {
-        "Double Shot": "SEVEN_SEEDS:coffee:31",
-        "Single Shot": "SEVEN_SEEDS:coffee:30"
+        "Double Shot": "HIC_CUP:coffee:31",
+        "Single Shot": "HIC_CUP:coffee:30"
       },
       "Flavorings for cappu cremo": {
-        "Caramel Syrup": "SEVEN_SEEDS:coffee:22",
-        "Chocolate syrup": "SEVEN_SEEDS:coffee:27"
+        "Caramel Syrup": "HIC_CUP:coffee:22",
+        "Chocolate syrup": "HIC_CUP:coffee:27"
       },
       "Flavorings for cappuccino": {
-        "Hazelnut Syrup": "SEVEN_SEEDS:coffee:23",
-        "Irish syrup": "SEVEN_SEEDS:coffee:26",
-        "None Required": "SEVEN_SEEDS:coffee:34",
-        "Tiramisu syrup": "SEVEN_SEEDS:coffee:24",
-        "Vanilla syrup": "SEVEN_SEEDS:coffee:25"
+        "Hazelnut Syrup": "HIC_CUP:coffee:23",
+        "Irish syrup": "HIC_CUP:coffee:26",
+        "None Required": "HIC_CUP:coffee:34",
+        "Tiramisu syrup": "HIC_CUP:coffee:24",
+        "Vanilla syrup": "HIC_CUP:coffee:25"
       },
       "Flavorings for coffee mocha": {
-        "Chocolate syrup": "SEVEN_SEEDS:coffee:27"
+        "Chocolate syrup": "HIC_CUP:coffee:27"
       },
       "Flavorings for cold coffee": {
-        "Caramel Syrup": "SEVEN_SEEDS:coffee:22",
-        "Chocolate syrup": "SEVEN_SEEDS:coffee:27",
-        "Hazelnut Syrup": "SEVEN_SEEDS:coffee:23",
-        "Irish syrup": "SEVEN_SEEDS:coffee:26",
-        "None Required": "SEVEN_SEEDS:coffee:34",
-        "Tiramisu syrup": "SEVEN_SEEDS:coffee:24",
-        "Vanilla syrup": "SEVEN_SEEDS:coffee:25"
+        "Caramel Syrup": "HIC_CUP:coffee:22",
+        "Chocolate syrup": "HIC_CUP:coffee:27",
+        "Hazelnut Syrup": "HIC_CUP:coffee:23",
+        "Irish syrup": "HIC_CUP:coffee:26",
+        "None Required": "HIC_CUP:coffee:34",
+        "Tiramisu syrup": "HIC_CUP:coffee:24",
+        "Vanilla syrup": "HIC_CUP:coffee:25"
       },
       "Flavorings for flat white": {
-        "Caramel Syrup": "SEVEN_SEEDS:coffee:22",
-        "Hazelnut Syrup": "SEVEN_SEEDS:coffee:23",
-        "Irish syrup": "SEVEN_SEEDS:coffee:26",
-        "None Required": "SEVEN_SEEDS:coffee:34",
-        "Tiramisu syrup": "SEVEN_SEEDS:coffee:24",
-        "Vanilla syrup": "SEVEN_SEEDS:coffee:25"
+        "Caramel Syrup": "HIC_CUP:coffee:22",
+        "Hazelnut Syrup": "HIC_CUP:coffee:23",
+        "Irish syrup": "HIC_CUP:coffee:26",
+        "None Required": "HIC_CUP:coffee:34",
+        "Tiramisu syrup": "HIC_CUP:coffee:24",
+        "Vanilla syrup": "HIC_CUP:coffee:25"
       },
       "Flavorings for latte": {
-        "Caramel Syrup": "SEVEN_SEEDS:coffee:22",
-        "Hazelnut Syrup": "SEVEN_SEEDS:coffee:23",
-        "Irish syrup": "SEVEN_SEEDS:coffee:26",
-        "None Required": "SEVEN_SEEDS:coffee:34",
-        "Tiramisu syrup": "SEVEN_SEEDS:coffee:24",
-        "Vanilla syrup": "SEVEN_SEEDS:coffee:25"
+        "Caramel Syrup": "HIC_CUP:coffee:22",
+        "Hazelnut Syrup": "HIC_CUP:coffee:23",
+        "Irish syrup": "HIC_CUP:coffee:26",
+        "None Required": "HIC_CUP:coffee:34",
+        "Tiramisu syrup": "HIC_CUP:coffee:24",
+        "Vanilla syrup": "HIC_CUP:coffee:25"
       },
       "Flavorings for mocha frappuccino": {
-        "Chocolate syrup": "SEVEN_SEEDS:coffee:27"
-      },
-      "Hot or Iced Option": {
-        "Hot": "SEVEN_SEEDS:coffee:52",
-        "Iced": "SEVEN_SEEDS:coffee:53"
+        "Chocolate syrup": "HIC_CUP:coffee:27"
       },
       "Milk option": {
-        "Almond": "SEVEN_SEEDS:coffee:20",
-        "Dairy": "SEVEN_SEEDS:coffee:51",
-        "Lactose Free Milk": "SEVEN_SEEDS:coffee:19",
-        "Oat": "SEVEN_SEEDS:coffee:18",
-        "Slim": "SEVEN_SEEDS:coffee:54",
-        "Soy": "SEVEN_SEEDS:coffee:21"
-      },
-      "Variety": {
-        "Project Pearl": "SEVEN_SEEDS:coffee:56",
-        "VLGE": "SEVEN_SEEDS:coffee:55"
+        "Lactose Free Milk": "HIC_CUP:coffee:19",
+        "Oat Milk": "HIC_CUP:coffee:18",
+        "Slim Milk": "HIC_CUP:coffee:17",
+        "Soy Milk": "HIC_CUP:coffee:21",
+        "Toned Milk": "HIC_CUP:coffee:16"
       }
     }
   }

@@ -1,7 +1,7 @@
 {
   "menu": [
     {
-      "foodid": "CHAI_MAADI:otherbeverages:38",
+      "foodid": "KAAPI_VIBE:otherbeverages:38",
       "foodname": "Boost",
       "description": "Boost powder with milk",
       "submenu": [
@@ -9,7 +9,7 @@
       ]
     },
     {
-      "foodid": "CHAI_MAADI:otherbeverages:39",
+      "foodid": "KAAPI_VIBE:otherbeverages:87",
       "foodname": "Bournvita",
       "description": "Bournvita powder with milk",
       "submenu": [
@@ -17,7 +17,7 @@
       ]
     },
     {
-      "foodid": "CHAI_MAADI:otherbeverages:37",
+      "foodid": "KAAPI_VIBE:otherbeverages:37",
       "foodname": "Horlicks",
       "description": "Horlicks and steamed milk of choice",
       "submenu": [
@@ -25,7 +25,7 @@
       ]
     },
     {
-      "foodid": "CHAI_MAADI:otherbeverages:10",
+      "foodid": "KAAPI_VIBE:otherbeverages:10",
       "foodname": "Hot Chocolate",
       "description": "Chocolate and steamed milk of choice",
       "submenu": [
@@ -33,15 +33,16 @@
       ]
     },
     {
-      "foodid": "CHAI_MAADI:otherbeverages:90",
+      "foodid": "KAAPI_VIBE:otherbeverages:88",
       "foodname": "Milk",
       "description": "",
       "submenu": [
+        "Hot Or Cold",
         "Milk option"
       ]
     },
     {
-      "foodid": "CHAI_MAADI:otherbeverages:35",
+      "foodid": "KAAPI_VIBE:otherbeverages:35",
       "foodname": "Turmeric Latte",
       "description": "A golden blend of turmeric, milk, and spices offering warmth, comfort, and natural anti-inflammatory benefits.",
       "submenu": [
@@ -82,6 +83,18 @@
         "min_quantity": 1,
         "multiple": false
       },
+      "Hot Or Cold": {
+        "default": "Hot Milk",
+        "free_quantity": 0,
+        "ismand": true,
+        "list": [
+          "Hot Milk",
+          "Cold Milk"
+        ],
+        "max_quantity": 1,
+        "min_quantity": 1,
+        "multiple": false
+      },
       "Milk option": {
         "default": "Dairy",
         "free_quantity": 0,
@@ -90,8 +103,7 @@
           "Dairy",
           "Oat",
           "Soy",
-          "Almond",
-          "Lactose Free Milk"
+          "Almond"
         ],
         "max_quantity": 1,
         "min_quantity": 1,
@@ -100,20 +112,23 @@
     },
     "extras": {
       "Flavorings for chocolate milkshake": {
-        "Chocolate syrup": "CHAI_MAADI:otherbeverages:27"
+        "Chocolate syrup": "KAAPI_VIBE:otherbeverages:27"
       },
       "Flavorings for hot chocolate": {
-        "Cocoa powder": "CHAI_MAADI:otherbeverages:85"
+        "Cocoa powder": "KAAPI_VIBE:otherbeverages:85"
       },
       "Flavorings for vanilla milkshake": {
-        "Vanilla syrup": "CHAI_MAADI:otherbeverages:25"
+        "Vanilla syrup": "KAAPI_VIBE:otherbeverages:25"
+      },
+      "Hot Or Cold": {
+        "Cold Milk": "KAAPI_VIBE:otherbeverages:91",
+        "Hot Milk": "KAAPI_VIBE:otherbeverages:90"
       },
       "Milk option": {
-        "Almond": "CHAI_MAADI:otherbeverages:20",
-        "Dairy": "CHAI_MAADI:otherbeverages:86",
-        "Lactose Free Milk": "CHAI_MAADI:otherbeverages:19",
-        "Oat": "CHAI_MAADI:otherbeverages:18",
-        "Soy": "CHAI_MAADI:otherbeverages:21"
+        "Almond": "KAAPI_VIBE:otherbeverages:20",
+        "Dairy": "KAAPI_VIBE:otherbeverages:86",
+        "Oat": "KAAPI_VIBE:otherbeverages:18",
+        "Soy": "KAAPI_VIBE:otherbeverages:21"
       }
     }
   }

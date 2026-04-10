@@ -3,93 +3,93 @@
     {
       "foodid": "KAAPI_VIBE:coffee:8",
       "foodname": "Americano",
+      "description": "Double shot espresso cut with water",
       "submenu": [
         "Hot or Iced Option",
         "Caffeine option"
-      ],
-      "description": "Double shot espresso cut with water"
+      ]
     },
     {
       "foodid": "KAAPI_VIBE:coffee:0",
       "foodname": "Cappuccino",
+      "description": "Double shot espresso with textured velvety microfoam",
       "submenu": [
         "Caffeine option",
         "Milk option"
-      ],
-      "description": "Double shot espresso with textured velvety microfoam"
+      ]
     },
     {
       "foodid": "KAAPI_VIBE:coffee:45",
       "foodname": "Cold Coffee",
+      "description": "Blend of cold coffee premix, milk and ice",
       "submenu": [
         "Caffeine option"
-      ],
-      "description": "Blend of cold coffee premix, milk and ice"
+      ]
     },
     {
       "foodid": "KAAPI_VIBE:coffee:47",
       "foodname": "Cortado",
+      "description": "Doble shot espresso with equal parts milk",
       "submenu": [
         "Caffeine option",
         "Milk option"
-      ],
-      "description": "Doble shot espresso with equal parts milk"
+      ]
     },
     {
       "foodid": "KAAPI_VIBE:coffee:5",
       "foodname": "Espresso",
-      "submenu": [],
-      "description": "Double shot espresso"
+      "description": "Double shot espresso",
+      "submenu": []
     },
     {
       "foodid": "KAAPI_VIBE:coffee:48",
       "foodname": "Flat White",
+      "description": "Double shot espresso with less steamed milk and thin layer of microfoam",
       "submenu": [
         "Caffeine option",
         "Milk option"
-      ],
-      "description": "Double shot espresso with less steamed milk and thin layer of microfoam"
+      ]
     },
     {
       "foodid": "KAAPI_VIBE:coffee:1",
       "foodname": "Latte",
+      "description": "Double shot espresso with steamed milk and microfoam top (the milkiest drink)",
       "submenu": [
         "Caffeine option",
         "Milk option",
         "Hot or Iced Option"
-      ],
-      "description": "Double shot espresso with steamed milk and microfoam top (the milkiest drink)"
+      ]
     },
     {
       "foodid": "KAAPI_VIBE:coffee:40",
       "foodname": "Macchiato",
-      "submenu": [],
-      "description": "Double shot espresso with a dollop of microfoam "
+      "description": "Double shot espresso with a dollop of microfoam ",
+      "submenu": []
     },
     {
       "foodid": "KAAPI_VIBE:coffee:43",
       "foodname": "Mocha",
+      "description": "Double shot espresso, chocolate steaming milk and microfoam top",
       "submenu": [
         "Caffeine option",
         "Milk option",
         "Hot or Iced Option"
-      ],
-      "description": "Double shot espresso, chocolate steaming milk and microfoam top"
+      ]
     },
     {
       "foodid": "KAAPI_VIBE:coffee:46",
       "foodname": "Piccolo",
+      "description": "Single shot espresso with steamed milk and a little foam (baby latte)",
       "submenu": [
         "Caffeine option",
         "Milk option"
-      ],
-      "description": "Single shot espresso with steamed milk and a little foam (baby latte)"
+      ]
     },
     {
       "foodid": "KAAPI_VIBE:coffee:11",
       "foodname": "South Indian Filter Coffee",
-      "submenu": [],
-      "description": "Brewed by dripping hot water through ground coffee served with milk"
+      "description": "Brewed by dripping hot water through ground coffee served with milk",
+      "submenu": []
     }
   ],
   "submenu": {
