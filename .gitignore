@@ -9,8 +9,8 @@ dist/
 .env.local
 
 # Database
-data/
-*.db
+# data/
+# *.db
 
 # Keep menu data
 !src/data/
