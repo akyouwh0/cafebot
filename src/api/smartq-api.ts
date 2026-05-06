@@ -259,7 +259,8 @@ export async function placeOrderDirect(
   quantity: number = 1,
   customizations?: Record<string, string>,
   notes?: string,
-  cachedMenuData?: { menu: any[]; submenu: any }
+  cachedMenuData?: { menu: any[]; submenu: any },
+  retryCount: number = 0
 ): Promise<OrderResult> {
   console.log('[SmartQ API] Placing order:', { customerName, cafeId, restaurantId, foodId, quantity, customizations, notes });
   
@@ -355,9 +356,17 @@ export async function placeOrderDirect(
     }
     
     if (data.result === 'fail') {
-      return { success: false, error: data.extras || 'API returned failure' };
+      const errorMsg = typeof data.extras === 'string' ? data.extras : JSON.stringify(data.extras);
+      // SmartQ marks the session as busy briefly after an order — retry with backoff
+      if (errorMsg.includes('already being placed') && retryCount < 4) {
+        const delay = (retryCount + 1) * 3000;
+        console.log(`[SmartQ API] Order busy, retrying in ${delay}ms (attempt ${retryCount + 1}/4)`);
+        await new Promise(res => setTimeout(res, delay));
+        return placeOrderDirect(customerName, cafeId, restaurantId, foodId, quantity, customizations, notes, cachedMenuData, retryCount + 1);
+      }
+      return { success: false, error: errorMsg || 'API returned failure' };
     }
-    
+
     return { success: false, error: 'Unknown API response' };
     
   } catch (err) {

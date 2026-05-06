@@ -1,5 +1,5 @@
 import { Context, InlineKeyboard } from 'grammy';
-import { getCafes, getRestaurants, getMenuItems, placeOrder, areCafesOpen, getOpenCafes, getSubmenuOptions } from '../api/smartq';
+import { getCafes, getRestaurants, getMenuItems, placeOrder, areCafesOpen, getOpenCafes, getSubmenuOptions, getOrderQueueSize } from '../api/smartq';
 import { getOrCreateUser, logOrder } from '../db';
 import { setPendingSave } from './usuals';
 import * as fs from 'fs';
@@ -77,13 +77,24 @@ async function showConfirmation(ctx: Context, session: NonNullable<ReturnType<ty
 function buildCustomizeKeyboard(cafeId: string, submenuName: string): InlineKeyboard {
   const options = getSubmenuOptions(cafeId, submenuName);
   const keyboard = new InlineKeyboard();
-  
+
   for (const opt of options) {
     const label = opt.default ? `${opt.name} ✓` : opt.name;
     keyboard.text(label, `cust:${submenuName}:${opt.name}`).row();
   }
-  
+
   return keyboard;
+}
+
+// Build customization step message with running summary of already-selected options
+function buildCustomizeMessage(itemName: string, submenuName: string, selectedSoFar: Record<string, string>): string {
+  let msg = `☕ *${itemName}*\n\n`;
+  for (const [key, val] of Object.entries(selectedSoFar)) {
+    msg += `✓ ${key}: _${val}_\n`;
+  }
+  if (Object.keys(selectedSoFar).length > 0) msg += '\n';
+  msg += `🔧 *${submenuName}:*`;
+  return msg;
 }
 
 export async function handleNew(ctx: Context) {
@@ -258,13 +269,13 @@ export async function handleOrderCallback(ctx: Context) {
     if (selectedItem.submenu && selectedItem.submenu.length > 0) {
       session.step = 'customize';
       session.customizeIndex = 0;
-      
+
       const firstSubmenu = selectedItem.submenu[0];
       const keyboard = buildCustomizeKeyboard(session.cafe!.id, firstSubmenu);
       keyboard.row().text('⬅️ Back', 'back:item').text('❌ Cancel', 'cancel');
-      
+
       await ctx.editMessageText(
-        `☕ *${session.item.name}*\n\n🔧 *${firstSubmenu}:*`,
+        buildCustomizeMessage(session.item.name, firstSubmenu, {}),
         { parse_mode: 'Markdown', reply_markup: keyboard }
       );
       return;
@@ -305,9 +316,9 @@ export async function handleOrderCallback(ctx: Context) {
       const nextSubmenu = submenuList[nextIndex];
       const keyboard = buildCustomizeKeyboard(session.cafe!.id, nextSubmenu);
       keyboard.row().text('⬅️ Back', 'back:cust').text('❌ Cancel', 'cancel');
-      
+
       await ctx.editMessageText(
-        `☕ *${session.item!.name}*\n\n🔧 *${nextSubmenu}:*`,
+        buildCustomizeMessage(session.item!.name, nextSubmenu, session.customizations!),
         { parse_mode: 'Markdown', reply_markup: keyboard }
       );
       return;
@@ -375,8 +386,13 @@ export async function handleOrderCallback(ctx: Context) {
     }
     
     const modeText = settings.testingMode ? ' (TEST MODE)' : '';
-    await ctx.editMessageText(`⏳ Placing your order...${modeText}`);
-    
+    const queued = getOrderQueueSize() > 0;
+    await ctx.editMessageText(
+      queued
+        ? `⏳ Another order is in progress, yours is next...${modeText}`
+        : `⏳ Placing your order...${modeText}`
+    );
+
     const result = await placeOrder(
       customerName,
       session.cafe.id,
@@ -384,7 +400,8 @@ export async function handleOrderCallback(ctx: Context) {
       session.item.id,
       1,
       session.customizations,
-      notes
+      notes,
+      queued ? async () => { await ctx.editMessageText(`⏳ Placing your order...${modeText}`); } : undefined
     );
     
     if (result.success) {
@@ -484,9 +501,9 @@ export async function handleOrderCallback(ctx: Context) {
         
         const keyboard = buildCustomizeKeyboard(session.cafe!.id, prevSubmenu);
         keyboard.row().text('⬅️ Back', currentIndex - 1 === 0 ? 'back:item' : 'back:cust').text('❌ Cancel', 'cancel');
-        
+
         await ctx.editMessageText(
-          `☕ *${session.item!.name}*\n\n🔧 *${prevSubmenu}:*`,
+          buildCustomizeMessage(session.item!.name, prevSubmenu, session.customizations!),
           { parse_mode: 'Markdown', reply_markup: keyboard }
         );
       }

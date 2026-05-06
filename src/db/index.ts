@@ -10,16 +10,16 @@ const schema = fs.readFileSync(path.join(__dirname, 'schema.sql'), 'utf-8');
 db.exec(schema);
 
 // User operations
-export function getOrCreateUser(telegramId: number, telegramName: string) {
+export function getOrCreateUser(telegramId: number, telegramName: string): { isNew: boolean; [key: string]: any } {
   const existing = db.prepare('SELECT * FROM users WHERE telegram_id = ?').get(telegramId);
   if (existing) {
     db.prepare("UPDATE users SET telegram_name = ?, updated_at = datetime('now') WHERE telegram_id = ?")
       .run(telegramName, telegramId);
-    return existing;
+    return { ...(existing as object), isNew: false };
   }
   db.prepare('INSERT INTO users (telegram_id, telegram_name) VALUES (?, ?)')
     .run(telegramId, telegramName);
-  return db.prepare('SELECT * FROM users WHERE telegram_id = ?').get(telegramId);
+  return { ...(db.prepare('SELECT * FROM users WHERE telegram_id = ?').get(telegramId) as object), isNew: true };
 }
 
 // Usual orders

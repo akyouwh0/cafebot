@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import { Bot } from 'grammy';
-import { handleStart, handleStats } from './handlers/start';
+import { handleStart, handleStats, MAIN_KEYBOARD } from './handlers/start';
 import { handleNew, handleOrderCallback, handleNotesInput } from './handlers/newOrder';
 import { handleUsuals, handleUsualCallback, handleSaveLabel, hasPendingSave } from './handlers/usuals';
 
@@ -29,17 +29,31 @@ bot.command('usuals', handleUsuals); // Alias
 bot.command('stats', handleStats);
 
 // Callback queries
+bot.callbackQuery('home:new', (ctx) => {
+  ctx.answerCallbackQuery();
+  return handleNew(ctx);
+});
+bot.callbackQuery('home:usuals', (ctx) => {
+  ctx.answerCallbackQuery();
+  return handleUsuals(ctx);
+});
 bot.callbackQuery(/^(cafe:|rest:|item:|cust:|notes:|confirm|cancel|back:)/, handleOrderCallback);
 bot.callbackQuery(/^usual:/, handleUsualCallback);
 
-// Handle text messages (for barista notes and save label)
+// Handle text messages (for persistent keyboard buttons, barista notes and save label)
 bot.on('message:text', async (ctx, next) => {
+  const text = ctx.message.text;
+
+  // Persistent keyboard buttons
+  if (text === '☕ New Order') return handleNew(ctx);
+  if (text === '⭐ My Usuals') return handleUsuals(ctx);
+
   // Check if user is entering barista notes
   if (ctx.from) {
     const notesHandled = await handleNotesInput(ctx);
     if (notesHandled) return;
   }
-  
+
   // Check if user is in "save label" flow
   if (ctx.from && hasPendingSave(ctx.from.id)) {
     const handled = await handleSaveLabel(ctx);

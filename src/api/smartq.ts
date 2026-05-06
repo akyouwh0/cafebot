@@ -37,6 +37,14 @@ export interface MenuItem {
 const menuCache: Record<string, { menu: MenuItem[]; submenu: any; timestamp: number }> = {};
 const CACHE_TTL = 10 * 60 * 1000; // 10 minutes
 
+// Order queue — serializes all placeOrder calls so concurrent orders don't share a session simultaneously
+let orderQueue: Promise<void> = Promise.resolve();
+let orderQueueSize = 0;
+
+export function getOrderQueueSize(): number {
+  return orderQueueSize;
+}
+
 // Fallback menu data from JSON files
 function loadFallbackMenu(cafeId: string, restaurantId: string): { menu: MenuItem[]; submenu: any } | null {
   try {
@@ -199,32 +207,40 @@ export async function placeOrder(
   foodId: string,
   quantity: number = 1,
   customizations?: Record<string, string>,
-  notes?: string
+  notes?: string,
+  onStart?: () => Promise<void>
 ): Promise<OrderResult> {
-  console.log('[placeOrder] Starting:', { customerName, cafeId, restaurantId, foodId, quantity, customizations, notes });
-  
-  // Get cached menu data if available
-  const cacheKey = `${cafeId}:${restaurantId}`;
-  const cachedData = menuCache[cacheKey];
-  
-  // If not in cache, fetch it first
-  if (!cachedData) {
-    console.log('[placeOrder] Menu not in cache, fetching...');
-    await getMenuItems(cafeId, restaurantId);
-  }
-  
-  const menuData = menuCache[cacheKey];
-  
-  return placeOrderDirect(
-    customerName,
-    cafeId,
-    restaurantId,
-    foodId,
-    quantity,
-    customizations,
-    notes,
-    menuData ? { menu: menuData.menu as any[], submenu: menuData.submenu } : undefined
-  );
+  orderQueueSize++;
+  return new Promise((resolve) => {
+    orderQueue = orderQueue.then(async () => {
+      orderQueueSize--;
+      console.log('[placeOrder] Starting:', { customerName, cafeId, restaurantId, foodId, quantity, customizations, notes });
+
+      if (onStart) await onStart();
+
+      // Get cached menu data if available
+      const cacheKey = `${cafeId}:${restaurantId}`;
+      if (!menuCache[cacheKey]) {
+        console.log('[placeOrder] Menu not in cache, fetching...');
+        await getMenuItems(cafeId, restaurantId);
+      }
+
+      const menuData = menuCache[cacheKey];
+
+      const result = await placeOrderDirect(
+        customerName,
+        cafeId,
+        restaurantId,
+        foodId,
+        quantity,
+        customizations,
+        notes,
+        menuData ? { menu: menuData.menu as any[], submenu: menuData.submenu } : undefined
+      );
+
+      resolve(result);
+    });
+  });
 }
 
 /**

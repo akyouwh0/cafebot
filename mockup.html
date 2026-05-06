@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartQ Cafe Bot — Mini App Mockup</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #1c1c1e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 24px;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  /* Phone frame */
+  .phone {
+    width: 375px;
+    height: 720px;
+    background: #000;
+    border-radius: 44px;
+    padding: 12px;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+    flex-shrink: 0;
+  }
+  .screen {
+    width: 100%;
+    height: 100%;
+    background: #efeff4;
+    border-radius: 34px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Telegram header */
+  .tg-header {
+    background: #fff;
+    padding: 12px 16px 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid #e5e5ea;
+    flex-shrink: 0;
+  }
+  .tg-back { color: #007aff; font-size: 16px; cursor: pointer; }
+  .tg-title { font-size: 17px; font-weight: 600; color: #000; flex: 1; }
+  .tg-avatar {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; color: #fff;
+  }
+
+  /* Screen content */
+  .content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0;
+  }
+
+  /* Screen label */
+  .screen-label {
+    text-align: center;
+    padding: 6px;
+    background: #007aff;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+
+  /* Bottom button */
+  .bottom-bar {
+    padding: 12px 16px 20px;
+    background: #efeff4;
+    flex-shrink: 0;
+  }
+  .btn-main {
+    width: 100%;
+    padding: 14px;
+    background: #007aff;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .btn-main:active { opacity: 0.8; }
+
+  /* ── SCREEN 1: Home ── */
+  .home-hero {
+    background: linear-gradient(160deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    padding: 24px 16px 20px;
+    color: #fff;
+  }
+  .home-greeting { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+  .home-sub { font-size: 14px; opacity: 0.7; }
+
+  .section-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #8e8e93;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 16px 16px 8px;
+  }
+
+  .usual-card {
+    background: #fff;
+    margin: 0 16px 8px;
+    border-radius: 12px;
+    padding: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+  .usual-card:active { opacity: 0.7; }
+  .usual-icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; flex-shrink: 0;
+  }
+  .usual-icon.coffee { background: #fff3e0; }
+  .usual-icon.tea { background: #e8f5e9; }
+  .usual-icon.seeds { background: #f3e5f5; }
+  .usual-info { flex: 1; }
+  .usual-name { font-size: 15px; font-weight: 600; color: #000; }
+  .usual-detail { font-size: 13px; color: #8e8e93; margin-top: 2px; }
+  .usual-cafe { font-size: 12px; color: #007aff; margin-top: 2px; }
+  .usual-arrow { color: #c7c7cc; font-size: 16px; }
+
+  .new-order-card {
+    background: #fff;
+    margin: 0 16px 16px;
+    border-radius: 12px;
+    padding: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    border: 2px dashed #007aff;
+  }
+  .new-order-icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    background: #e3f0ff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+  }
+  .new-order-text { font-size: 15px; font-weight: 600; color: #007aff; }
+
+  /* ── SCREEN 2: Cafe Selection ── */
+  .cafe-card {
+    background: #fff;
+    margin: 8px 16px;
+    border-radius: 14px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .cafe-banner {
+    height: 80px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 36px;
+  }
+  .cafe-banner.kaapi { background: linear-gradient(135deg, #f6d365, #fda085); }
+  .cafe-banner.seeds { background: linear-gradient(135deg, #a8edea, #fed6e3); }
+  .cafe-banner.chai  { background: linear-gradient(135deg, #d4fc79, #96e6a1); }
+  .cafe-banner.hiccup { background: linear-gradient(135deg, #e0c3fc, #8ec5fc); }
+  .cafe-info { padding: 12px 14px; display: flex; align-items: center; justify-content: space-between; }
+  .cafe-name { font-size: 16px; font-weight: 600; color: #000; }
+  .cafe-status { font-size: 12px; color: #34c759; font-weight: 500; }
+  .cafe-arrow { color: #c7c7cc; }
+
+  /* ── SCREEN 3: Menu ── */
+  .menu-header {
+    background: linear-gradient(135deg, #f6d365, #fda085);
+    padding: 20px 16px;
+    text-align: center;
+  }
+  .menu-cafe-icon { font-size: 40px; margin-bottom: 4px; }
+  .menu-cafe-name { font-size: 18px; font-weight: 700; color: #fff; }
+
+  .category-tabs {
+    background: #fff;
+    display: flex;
+    padding: 0 16px;
+    gap: 0;
+    border-bottom: 1px solid #e5e5ea;
+    overflow-x: auto;
+  }
+  .tab {
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #8e8e93;
+    white-space: nowrap;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+  }
+  .tab.active { color: #007aff; border-bottom-color: #007aff; }
+
+  .menu-item {
+    background: #fff;
+    margin: 8px 16px;
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+  }
+  .item-img {
+    width: 56px; height: 56px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px; flex-shrink: 0;
+  }
+  .item-img.warm { background: #fff3e0; }
+  .item-img.cool { background: #e3f2fd; }
+  .item-details { flex: 1; }
+  .item-name { font-size: 15px; font-weight: 600; color: #000; }
+  .item-desc { font-size: 12px; color: #8e8e93; margin-top: 2px; }
+  .item-opts { font-size: 12px; color: #007aff; margin-top: 4px; }
+  .item-add {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: #007aff; color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0; cursor: pointer;
+  }
+
+  /* ── SCREEN 4: Confirm ── */
+  .confirm-hero {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    padding: 28px 16px 24px;
+    text-align: center;
+    color: #fff;
+  }
+  .confirm-icon { font-size: 52px; margin-bottom: 8px; }
+  .confirm-item { font-size: 20px; font-weight: 700; }
+  .confirm-opts { font-size: 14px; opacity: 0.85; margin-top: 4px; }
+
+  .confirm-row {
+    background: #fff;
+    margin: 8px 16px;
+    border-radius: 12px;
+    padding: 14px 16px;
+  }
+  .confirm-row-label { font-size: 12px; color: #8e8e93; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.4px; font-weight: 600; }
+  .confirm-row-value { font-size: 15px; color: #000; font-weight: 500; }
+
+  .notes-input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    color: #000;
+    background: transparent;
+    font-family: inherit;
+  }
+  .notes-input::placeholder { color: #c7c7cc; }
+
+  .save-usual-row {
+    background: #fff;
+    margin: 8px 16px;
+    border-radius: 12px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .save-usual-label { font-size: 15px; color: #000; }
+  .toggle {
+    width: 48px; height: 28px; border-radius: 14px;
+    background: #34c759;
+    position: relative; cursor: pointer;
+  }
+  .toggle::after {
+    content: '';
+    position: absolute;
+    width: 24px; height: 24px;
+    background: #fff; border-radius: 50%;
+    top: 2px; right: 2px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  }
+</style>
+</head>
+<body>
+
+<!-- SCREEN 1: Home -->
+<div class="phone">
+  <div class="screen">
+    <div class="screen-label">Screen 1 — Home</div>
+    <div class="tg-header">
+      <div class="tg-avatar">☕</div>
+      <div class="tg-title">SmartQ Cafe</div>
+    </div>
+    <div class="content">
+      <div class="home-hero">
+        <div class="home-greeting">Good morning, Aakash ☀️</div>
+        <div class="home-sub">What are you having today?</div>
+      </div>
+
+      <div class="section-title">Your Usuals</div>
+
+      <div class="usual-card">
+        <div class="usual-icon coffee">☕</div>
+        <div class="usual-info">
+          <div class="usual-name">Mocha at 6</div>
+          <div class="usual-detail">Regular · Dairy · Hot</div>
+          <div class="usual-cafe">Kaapi Vibe</div>
+        </div>
+        <div class="usual-arrow">›</div>
+      </div>
+
+      <div class="usual-card">
+        <div class="usual-icon coffee">☕</div>
+        <div class="usual-info">
+          <div class="usual-name">Piccolo at 6th</div>
+          <div class="usual-detail">Regular · Dairy</div>
+          <div class="usual-cafe">Kaapi Vibe</div>
+        </div>
+        <div class="usual-arrow">›</div>
+      </div>
+
+      <div class="usual-card">
+        <div class="usual-icon seeds">🌱</div>
+        <div class="usual-info">
+          <div class="usual-name">Pour over</div>
+          <div class="usual-detail">VLGE · Hot</div>
+          <div class="usual-cafe">Seven Seeds</div>
+        </div>
+        <div class="usual-arrow">›</div>
+      </div>
+
+      <div class="usual-card">
+        <div class="usual-icon tea">🫖</div>
+        <div class="usual-info">
+          <div class="usual-name">Chai on 3rd</div>
+          <div class="usual-detail">Regular</div>
+          <div class="usual-cafe">Chai Maadi</div>
+        </div>
+        <div class="usual-arrow">›</div>
+      </div>
+
+      <div class="section-title">Something New?</div>
+
+      <div class="new-order-card">
+        <div class="new-order-icon">➕</div>
+        <div class="new-order-text">Browse the menu</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN 2: Cafe Selection -->
+<div class="phone">
+  <div class="screen">
+    <div class="screen-label">Screen 2 — Cafe Selection</div>
+    <div class="tg-header">
+      <div class="tg-back">‹ Back</div>
+      <div class="tg-title">Choose a Cafe</div>
+    </div>
+    <div class="content" style="padding-top: 8px;">
+
+      <div class="cafe-card">
+        <div class="cafe-banner kaapi">☕</div>
+        <div class="cafe-info">
+          <div>
+            <div class="cafe-name">Kaapi Vibe</div>
+            <div class="cafe-status">● Open now</div>
+          </div>
+          <div class="cafe-arrow">›</div>
+        </div>
+      </div>
+
+      <div class="cafe-card">
+        <div class="cafe-banner seeds">🌱</div>
+        <div class="cafe-info">
+          <div>
+            <div class="cafe-name">Seven Seeds</div>
+            <div class="cafe-status">● Open now</div>
+          </div>
+          <div class="cafe-arrow">›</div>
+        </div>
+      </div>
+
+      <div class="cafe-card">
+        <div class="cafe-banner chai">🫖</div>
+        <div class="cafe-info">
+          <div>
+            <div class="cafe-name">Chai Maadi</div>
+            <div class="cafe-status">● Open now</div>
+          </div>
+          <div class="cafe-arrow">›</div>
+        </div>
+      </div>
+
+      <div class="cafe-card">
+        <div class="cafe-banner hiccup">🧋</div>
+        <div class="cafe-info">
+          <div>
+            <div class="cafe-name">HicCup</div>
+            <div class="cafe-status">● Open now</div>
+          </div>
+          <div class="cafe-arrow">›</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN 3: Menu -->
+<div class="phone">
+  <div class="screen">
+    <div class="screen-label">Screen 3 — Menu</div>
+    <div class="tg-header">
+      <div class="tg-back">‹ Back</div>
+      <div class="tg-title">Kaapi Vibe</div>
+    </div>
+    <div class="content">
+      <div class="menu-header">
+        <div class="menu-cafe-icon">☕</div>
+        <div class="menu-cafe-name">Kaapi Vibe</div>
+      </div>
+
+      <div class="category-tabs">
+        <div class="tab active">☕ Coffee</div>
+        <div class="tab">🫖 Chai</div>
+        <div class="tab">🥤 Other</div>
+      </div>
+
+      <div style="height: 8px;"></div>
+
+      <div class="menu-item">
+        <div class="item-img warm">☕</div>
+        <div class="item-details">
+          <div class="item-name">Cappuccino</div>
+          <div class="item-desc">Espresso with steamed milk foam</div>
+          <div class="item-opts">Caffeine · Milk · Size</div>
+        </div>
+        <div class="item-add">+</div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-img warm">☕</div>
+        <div class="item-details">
+          <div class="item-name">Piccolo</div>
+          <div class="item-desc">Ristretto with steamed milk</div>
+          <div class="item-opts">Caffeine · Milk</div>
+        </div>
+        <div class="item-add">+</div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-img warm">🍫</div>
+        <div class="item-details">
+          <div class="item-name">Mocha</div>
+          <div class="item-desc">Espresso with chocolate & milk</div>
+          <div class="item-opts">Caffeine · Milk · Hot or Iced</div>
+        </div>
+        <div class="item-add">+</div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-img cool">🧊</div>
+        <div class="item-details">
+          <div class="item-name">Americano</div>
+          <div class="item-desc">Espresso with hot water</div>
+          <div class="item-opts">Caffeine · Hot or Iced</div>
+        </div>
+        <div class="item-add">+</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN 4: Order Confirmation -->
+<div class="phone">
+  <div class="screen">
+    <div class="screen-label">Screen 4 — Confirm Order</div>
+    <div class="tg-header">
+      <div class="tg-back">‹ Back</div>
+      <div class="tg-title">Confirm Order</div>
+    </div>
+    <div class="content">
+
+      <div class="confirm-hero">
+        <div class="confirm-icon">☕</div>
+        <div class="confirm-item">Mocha</div>
+        <div class="confirm-opts">Regular · Dairy · Hot</div>
+      </div>
+
+      <div style="height: 8px;"></div>
+
+      <div class="confirm-row">
+        <div class="confirm-row-label">Cafe</div>
+        <div class="confirm-row-value">☕ Kaapi Vibe</div>
+      </div>
+
+      <div class="confirm-row">
+        <div class="confirm-row-label">Name on order</div>
+        <div class="confirm-row-value">Aakash</div>
+      </div>
+
+      <div class="confirm-row">
+        <div class="confirm-row-label">Barista Notes</div>
+        <input class="notes-input" placeholder="e.g. tall mug, extra hot…" value="Tall mug">
+      </div>
+
+      <div class="save-usual-row">
+        <div class="save-usual-label">Save as usual</div>
+        <div class="toggle"></div>
+      </div>
+
+    </div>
+    <div class="bottom-bar">
+      <button class="btn-main">Place Order</button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
