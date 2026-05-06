@@ -248,6 +248,16 @@ export interface OrderResult {
   error?: string;
 }
 
+// Mutex to serialize order placement — the shared SmartQ session rejects concurrent orders
+let orderMutex: Promise<void> = Promise.resolve();
+
+function withOrderMutex<T>(fn: () => Promise<T>): Promise<T> {
+  const current = orderMutex;
+  let release!: () => void;
+  orderMutex = new Promise(resolve => { release = resolve; });
+  return current.then(() => fn()).finally(() => release());
+}
+
 /**
  * Place an order via direct API call
  */
@@ -262,36 +272,34 @@ export async function placeOrderDirect(
   cachedMenuData?: { menu: any[]; submenu: any }
 ): Promise<OrderResult> {
   console.log('[SmartQ API] Placing order:', { customerName, cafeId, restaurantId, foodId, quantity, customizations, notes });
-  
+
   // Use cached menu data if provided, otherwise load from file
   const menuData = cachedMenuData || loadMenuData(cafeId.toLowerCase().replace('_', '-'), restaurantId);
   if (!menuData) {
     return { success: false, error: `Menu data not found for ${cafeId}:${restaurantId}` };
   }
-  
+
   // Find the food item
   const foodItem = menuData.menu.find((item: any) => item.foodid === foodId);
   if (!foodItem) {
     return { success: false, error: `Food item not found: ${foodId}` };
   }
-  
+
   // Build selected options from customizations or use defaults
   const selectedOptions: Record<string, { name: string; foodid: string }> = {};
-  
+
   for (const submenuName of (foodItem.submenu || [])) {
-    // Look for submenu data in the correct structure (attributes + extras)
     const attributes = menuData.submenu?.attributes?.[submenuName];
     const extras = menuData.submenu?.extras?.[submenuName];
-    
+
     if (!attributes || !extras) {
       console.log(`[SmartQ API] Submenu data not found for: ${submenuName}`);
       continue;
     }
-    
-    // Use customization if provided, otherwise use default
+
     const selectedName = customizations?.[submenuName] || attributes.default;
     const selectedFoodId = extras[selectedName];
-    
+
     if (selectedFoodId) {
       selectedOptions[submenuName] = { name: selectedName, foodid: selectedFoodId };
       console.log(`[SmartQ API] Selected option: ${submenuName} = ${selectedName} (${selectedFoodId})`);
@@ -299,7 +307,7 @@ export async function placeOrderDirect(
       console.log(`[SmartQ API] No food ID found for: ${submenuName} = ${selectedName}`);
     }
   }
-  
+
   // Build the order payload
   const payload = buildOrderPayload(
     customerName,
@@ -310,58 +318,57 @@ export async function placeOrderDirect(
     selectedOptions,
     notes
   );
-  
+
   console.log('[SmartQ API] Order payload built, order ID:', payload.orderid);
-  
-  try {
-    // Load session cookies
-    const session = loadSession();
-    const configPath = path.join(__dirname, '../config/session.json');
-    let cookieStr = '';
+
+  // Serialize API calls — the shared session rejects concurrent orders
+  return withOrderMutex(async () => {
     try {
-      const config = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
-      if (config.cookies) {
-        cookieStr = `unauthcookie=${config.cookies.unauthcookie}; cookie=${config.cookies.cookie}`;
+      const configPath = path.join(__dirname, '../config/session.json');
+      let cookieStr = '';
+      try {
+        const config = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
+        if (config.cookies) {
+          cookieStr = `unauthcookie=${config.cookies.unauthcookie}; cookie=${config.cookies.cookie}`;
+        }
+      } catch {}
+
+      const response = await fetch(`${API_BASE}/v2/app/service/placemultipleorders`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Origin': 'https://app.thesmartq.com',
+          'Referer': 'https://app.thesmartq.com/',
+          'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
+          'smartq_appid': 'timetoeat-pwa',
+          'smartq_location': 'gogo',
+          'smartq_foodcourt': cafeId,
+          ...(cookieStr && { 'Cookie': cookieStr })
+        },
+        body: JSON.stringify(payload)
+      });
+
+      const data = await response.json() as any;
+      console.log('[SmartQ API] Response:', JSON.stringify(data).substring(0, 500));
+
+      const orderStatus = data.extras?.orderextras?.orderstatus || data.extras?.orderstatus;
+      const orderIds = data.extras?.orderextras?.orderids || [];
+
+      if (orderStatus === 'orderpaid' || data.extras?.orderSuccess || orderIds.length > 0) {
+        const orderId = orderIds[0]?.split('Z')[0] || payload.orderid.split('Z')[0];
+        return { success: true, orderId };
       }
-    } catch {}
-    
-    const response = await fetch(`${API_BASE}/v2/app/service/placemultipleorders`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Origin': 'https://app.thesmartq.com',
-        'Referer': 'https://app.thesmartq.com/',
-        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
-        'smartq_appid': 'timetoeat-pwa',
-        'smartq_location': 'gogo',
-        'smartq_foodcourt': cafeId,
-        ...(cookieStr && { 'Cookie': cookieStr })
-      },
-      body: JSON.stringify(payload)
-    });
-    
-    const data = await response.json() as any;
-    console.log('[SmartQ API] Response:', JSON.stringify(data).substring(0, 500));
-    
-    // Check various success indicators
-    const orderStatus = data.extras?.orderextras?.orderstatus || data.extras?.orderstatus;
-    const orderIds = data.extras?.orderextras?.orderids || [];
-    
-    if (orderStatus === 'orderpaid' || data.extras?.orderSuccess || orderIds.length > 0) {
-      // Extract order ID from response or use our generated one
-      const orderId = orderIds[0]?.split('Z')[0] || payload.orderid.split('Z')[0];
-      return { success: true, orderId };
+
+      if (data.result === 'fail') {
+        return { success: false, error: data.extras || 'API returned failure' };
+      }
+
+      return { success: false, error: 'Unknown API response' };
+
+    } catch (err) {
+      console.error('[SmartQ API] Error:', err);
+      return { success: false, error: `API error: ${err}` };
     }
-    
-    if (data.result === 'fail') {
-      return { success: false, error: data.extras || 'API returned failure' };
-    }
-    
-    return { success: false, error: 'Unknown API response' };
-    
-  } catch (err) {
-    console.error('[SmartQ API] Error:', err);
-    return { success: false, error: `API error: ${err}` };
-  }
+  });
 }
