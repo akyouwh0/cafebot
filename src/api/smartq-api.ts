@@ -357,11 +357,10 @@ export async function placeOrderDirect(
     
     if (data.result === 'fail') {
       const errorMsg = typeof data.extras === 'string' ? data.extras : JSON.stringify(data.extras);
-      // SmartQ marks the session as busy briefly after an order — retry with backoff
-      if (errorMsg.includes('already being placed') && retryCount < 4) {
-        const delay = (retryCount + 1) * 3000;
-        console.log(`[SmartQ API] Order busy, retrying in ${delay}ms (attempt ${retryCount + 1}/4)`);
-        await new Promise(res => setTimeout(res, delay));
+      // SmartQ keeps the session locked briefly after an order — retry every 5s for up to 50s
+      if (errorMsg.includes('already being placed') && retryCount < 10) {
+        console.log(`[SmartQ API] Order busy, retrying in 5s (attempt ${retryCount + 1}/10)`);
+        await new Promise(res => setTimeout(res, 5000));
         return placeOrderDirect(customerName, cafeId, restaurantId, foodId, quantity, customizations, notes, cachedMenuData, retryCount + 1);
       }
       return { success: false, error: errorMsg || 'API returned failure' };
